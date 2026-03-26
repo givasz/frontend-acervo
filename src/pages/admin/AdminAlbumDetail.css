@@ -1,0 +1,153 @@
+.admin-album-detail { padding-bottom: 4rem; }
+
+.upload-section { padding: 2rem 2.5rem; }
+
+.upload-zone {
+  border: 2px dashed #3a3530;
+  padding: 3rem 2rem;
+  text-align: center;
+  cursor: pointer;
+  transition: all var(--transition);
+  color: var(--ash);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  border-radius: var(--radius);
+}
+.upload-zone:hover, .upload-zone.drag-over {
+  border-color: var(--sepia);
+  background: rgba(200,169,110,0.04);
+  color: var(--sepia);
+}
+.upload-zone__text { font-size: 1rem; color: var(--fog); }
+.upload-zone__text span { color: var(--sepia); text-decoration: underline; }
+.upload-zone__hint { font-size: 0.68rem; letter-spacing: 0.08em; text-transform: uppercase; }
+
+.upload-progress {
+  width: 100%;
+  max-width: 300px;
+  position: relative;
+  height: 4px;
+  background: var(--dim);
+  border-radius: 2px;
+  overflow: hidden;
+}
+.upload-progress__bar { position: absolute; top:0; left:0; height:100%; background: var(--sepia); transition: width 200ms ease; }
+
+.admin-images-section { padding: 0 2.5rem 2rem; }
+.admin-images-section__title { font-style: italic; font-size: 1.2rem; margin-bottom: 1.5rem; }
+
+.admin-images-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 12px;
+}
+.admin-img-card {
+  background: var(--surface);
+  border: 1px solid #2e2a25;
+  overflow: hidden;
+  transition: border-color var(--transition);
+}
+.admin-img-card:hover { border-color: var(--sepia-dark); }
+.admin-img-card--cover { border-color: var(--sepia) !important; }
+.admin-img-card__cover-badge {
+  position: absolute;
+  bottom: 8px; left: 8px;
+  background: var(--sepia);
+  color: var(--ink);
+  font-size: 0.58rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 3px 7px;
+  font-weight: 600;
+}
+.admin-action-btn--active {
+  color: var(--sepia) !important;
+  border-color: var(--sepia-dark) !important;
+}
+.admin-img-card__thumb {
+  position: relative;
+  height: 150px;
+  overflow: hidden;
+}
+.admin-img-card__thumb img,
+.admin-img-card__thumb video { width:100%; height:100%; object-fit:cover; }
+.admin-img-card__actions {
+  position: absolute;
+  top: 8px; right: 8px;
+  display: flex;
+  gap: 4px;
+  opacity: 0;
+  transition: opacity var(--transition);
+}
+.admin-img-card:hover .admin-img-card__actions { opacity: 1; }
+.admin-img-card__actions .admin-action-btn { background: rgba(14,12,10,0.85); }
+.admin-img-card__info { padding: 10px 12px 12px; }
+.admin-img-card__title { font-style: italic; font-size: 0.85rem; display: block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.admin-img-card__meta { font-size: 0.65rem; color: var(--ash); letter-spacing: 0.06em; display: block; margin-top: 2px; }
+
+/* Wide modal for metadata editor */
+.modal--wide { max-width: 900px; width: 95vw; }
+
+.meta-editor {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  gap: 0;
+  max-height: 80vh;
+}
+@media (max-width: 700px) { .meta-editor { grid-template-columns: 1fr; } }
+
+.meta-editor__preview {
+  padding: 1.5rem;
+  border-right: 1px solid rgba(200,169,110,0.1);
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  background: var(--dim);
+}
+.meta-editor__preview img {
+  max-width: 100%;
+  max-height: 300px;
+  object-fit: contain;
+}
+.meta-editor__preview iframe {
+  width: 100%;
+  height: 420px;
+  border: none;
+  background: #fff;
+}
+
+.meta-editor__form {
+  padding: 1.5rem 2rem;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.meta-fields-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+@media (max-width: 600px) { .meta-fields-grid { grid-template-columns: 1fr; } }
+
+.meta-editor__divider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--sepia);
+  border-top: 1px solid rgba(200,169,110,0.15);
+  padding-top: 16px;
+  margin-top: 4px;
+}
+
+.extra-field-row {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}

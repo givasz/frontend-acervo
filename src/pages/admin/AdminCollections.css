@@ -1,0 +1,96 @@
+/* Shared admin table styles */
+.admin-table-wrap {
+  padding: 2rem 2.5rem;
+}
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+.admin-table thead tr {
+  border-bottom: 2px solid rgba(200,169,110,0.2);
+}
+.admin-table th {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--ash);
+  padding: 0 16px 12px 0;
+  text-align: left;
+  font-weight: 400;
+}
+.admin-table td {
+  padding: 14px 16px 14px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+  vertical-align: middle;
+}
+.admin-table tr:hover td { background: rgba(255,255,255,0.01); }
+.admin-table__name { font-style: italic; color: var(--parchment); }
+.admin-table__desc { font-size: 0.82rem; color: var(--ash); margin-top: 2px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 300px; }
+
+.admin-table__actions { display: flex; gap: 6px; align-items: center; }
+.admin-action-btn {
+  display: flex;
+  align-items: center;
+  padding: 7px;
+  color: var(--ash);
+  border: 1px solid transparent;
+  border-radius: var(--radius);
+  transition: all var(--transition);
+  text-decoration: none;
+}
+.admin-action-btn:hover { color: var(--sepia); border-color: var(--sepia-dark); background: rgba(200,169,110,0.06); }
+.admin-action-btn--danger:hover { color: var(--rust-light); border-color: var(--rust); background: rgba(155,58,26,0.08); }
+
+.admin-loading, .admin-empty {
+  padding: 4rem 0;
+  text-align: center;
+  color: var(--ash);
+  font-family: var(--font-body);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+/* Modal */
+.modal-backdrop {
+  position: fixed; inset: 0;
+  background: rgba(8,7,5,0.85);
+  z-index: 300;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  backdrop-filter: blur(4px);
+}
+.modal {
+  background: var(--surface);
+  border: 1px solid rgba(200,169,110,0.2);
+  width: 100%;
+  max-width: 560px;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 40px 100px rgba(0,0,0,0.6);
+}
+.modal__header {
+  padding: 1.5rem 2rem;
+  border-bottom: 1px solid rgba(200,169,110,0.1);
+}
+.modal__title { font-size: 1.3rem; font-style: italic; }
+.modal__body {
+  padding: 1.5rem 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+.modal__footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  padding-top: 8px;
+}
+
+/* Admin collections page */
+.admin-colecoes {}
