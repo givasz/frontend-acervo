@@ -39,9 +39,14 @@ export default function EntrevistasPage() {
                   to={`/material-complementar/entrevistas/${v.id}`}
                   onMouseEnter={e => { e.currentTarget.style.paddingLeft = '0.75rem'; e.currentTarget.querySelector('.arrow').style.opacity = '1'; }}
                   onMouseLeave={e => { e.currentTarget.style.paddingLeft = '0.25rem'; e.currentTarget.querySelector('.arrow').style.opacity = '0'; }}
-                  style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '1rem', padding: '1rem 0.25rem', color: 'inherit', transition: 'padding-left 180ms ease' }}
+                  style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '1rem', padding: '0.75rem 0.25rem', color: 'inherit', transition: 'padding-left 180ms ease' }}
                 >
-                  <span style={{ fontFamily: 'var(--font-body)', fontSize: '1.05rem', color: 'var(--parchment)', lineHeight: 1.4 }}>
+                  <img
+                    src={`https://img.youtube.com/vi/${v.youtube_id}/mqdefault.jpg`}
+                    alt=""
+                    style={{ width: 96, height: 54, objectFit: 'cover', flexShrink: 0, opacity: 0.85 }}
+                  />
+                  <span style={{ fontFamily: 'var(--font-body)', fontSize: '1.05rem', color: 'var(--parchment)', lineHeight: 1.4, flex: 1 }}>
                     {v.titulo}
                   </span>
                   <ChevronRight className="arrow" size={16} style={{ color: 'var(--sepia)', flexShrink: 0, opacity: 0, transition: 'opacity 180ms ease' }} />
