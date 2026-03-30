@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Play, Youtube } from 'lucide-react';
+import { Youtube, ChevronRight } from 'lucide-react';
 import { getSettings } from '../api';
 
 export default function EntrevistasPage() {
@@ -14,7 +14,7 @@ export default function EntrevistasPage() {
 
   return (
     <div style={{ minHeight: '80vh', padding: '5rem 2rem' }}>
-      <div style={{ maxWidth: '1100px', margin: '0 auto' }}>
+      <div style={{ maxWidth: '700px', margin: '0 auto' }}>
         <p className="mono" style={{ fontSize: '0.7rem', letterSpacing: '0.2em', color: 'var(--sepia)', textTransform: 'uppercase', marginBottom: '1rem' }}>
           Material Complementar
         </p>
@@ -31,43 +31,24 @@ export default function EntrevistasPage() {
             </p>
           </div>
         ) : (
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))', gap: '1.5rem' }}>
-            {videos.map((v) => (
-              <Link
-                key={v.id}
-                to={`/material-complementar/entrevistas/${v.id}`}
-                style={{ textDecoration: 'none' }}
-              >
-                <div style={{
-                  background: 'var(--panel)',
-                  border: '1px solid rgba(200,169,110,0.15)',
-                  overflow: 'hidden',
-                  transition: 'border-color 200ms',
-                }}
-                  onMouseEnter={e => e.currentTarget.style.borderColor = 'rgba(200,169,110,0.4)'}
-                  onMouseLeave={e => e.currentTarget.style.borderColor = 'rgba(200,169,110,0.15)'}
+          <ul style={{ listStyle: 'none', margin: 0, padding: 0 }}>
+            {videos.map((v, i) => (
+              <li key={v.id}>
+                {i > 0 && <div style={{ height: '1px', background: 'rgba(200,169,110,0.12)' }} />}
+                <Link
+                  to={`/material-complementar/entrevistas/${v.id}`}
+                  onMouseEnter={e => { e.currentTarget.style.paddingLeft = '0.75rem'; e.currentTarget.querySelector('.arrow').style.opacity = '1'; }}
+                  onMouseLeave={e => { e.currentTarget.style.paddingLeft = '0.25rem'; e.currentTarget.querySelector('.arrow').style.opacity = '0'; }}
+                  style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '1rem', padding: '1rem 0.25rem', color: 'inherit', transition: 'padding-left 180ms ease' }}
                 >
-                  <div style={{ position: 'relative', paddingBottom: '56.25%', background: '#000' }}>
-                    <img
-                      src={`https://img.youtube.com/vi/${v.youtube_id}/mqdefault.jpg`}
-                      alt={v.titulo}
-                      style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', opacity: 0.85 }}
-                    />
-                    <div style={{ position: 'absolute', inset: 0, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                      <div style={{ width: 48, height: 48, borderRadius: '50%', background: 'rgba(0,0,0,0.7)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                        <Play size={20} fill="white" color="white" style={{ marginLeft: 3 }} />
-                      </div>
-                    </div>
-                  </div>
-                  <div style={{ padding: '1rem' }}>
-                    <p style={{ fontFamily: 'var(--font-body)', fontSize: '0.95rem', color: 'var(--parchment)', lineHeight: 1.4 }}>
-                      {v.titulo}
-                    </p>
-                  </div>
-                </div>
-              </Link>
+                  <span style={{ fontFamily: 'var(--font-body)', fontSize: '1.05rem', color: 'var(--parchment)', lineHeight: 1.4 }}>
+                    {v.titulo}
+                  </span>
+                  <ChevronRight className="arrow" size={16} style={{ color: 'var(--sepia)', flexShrink: 0, opacity: 0, transition: 'opacity 180ms ease' }} />
+                </Link>
+              </li>
             ))}
-          </div>
+          </ul>
         )}
       </div>
     </div>
