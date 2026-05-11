@@ -3,7 +3,7 @@
 .upload-section { padding: 2rem 2.5rem; }
 
 .upload-zone {
-  border: 2px dashed #3a3530;
+  border: 2px dashed #344038;
   padding: 3rem 2rem;
   text-align: center;
   cursor: pointer;
@@ -17,7 +17,7 @@
 }
 .upload-zone:hover, .upload-zone.drag-over {
   border-color: var(--sepia);
-  background: rgba(200,169,110,0.04);
+  background: rgba(80,112,96,0.06);
   color: var(--sepia);
 }
 .upload-zone__text { font-size: 1rem; color: var(--fog); }
@@ -45,7 +45,7 @@
 }
 .admin-img-card {
   background: var(--surface);
-  border: 1px solid #2e2a25;
+  border: 1px solid #3A4040;
   overflow: hidden;
   transition: border-color var(--transition);
 }
@@ -55,7 +55,7 @@
   position: absolute;
   bottom: 8px; left: 8px;
   background: var(--sepia);
-  color: var(--ink);
+  color: var(--parchment);
   font-size: 0.58rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -82,7 +82,7 @@
   transition: opacity var(--transition);
 }
 .admin-img-card:hover .admin-img-card__actions { opacity: 1; }
-.admin-img-card__actions .admin-action-btn { background: rgba(14,12,10,0.85); }
+.admin-img-card__actions .admin-action-btn { background: rgba(30,34,32,0.88); }
 .admin-img-card__info { padding: 10px 12px 12px; }
 .admin-img-card__title { font-style: italic; font-size: 0.85rem; display: block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .admin-img-card__meta { font-size: 0.65rem; color: var(--ash); letter-spacing: 0.06em; display: block; margin-top: 2px; }
@@ -100,7 +100,7 @@
 
 .meta-editor__preview {
   padding: 1.5rem;
-  border-right: 1px solid rgba(200,169,110,0.1);
+  border-right: 1px solid rgba(80,112,96,0.12);
   display: flex;
   align-items: flex-start;
   justify-content: center;
@@ -140,8 +140,8 @@
   font-size: 0.65rem;
   letter-spacing: 0.15em;
   text-transform: uppercase;
-  color: var(--sepia);
-  border-top: 1px solid rgba(200,169,110,0.15);
+  color: var(--sepia-light);
+  border-top: 1px solid rgba(80,112,96,0.15);
   padding-top: 16px;
   margin-top: 4px;
 }

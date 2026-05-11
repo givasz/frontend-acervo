@@ -2,7 +2,7 @@ export default function CatalogacaoPage() {
   return (
     <div style={{ minHeight: '80vh', padding: '5rem 2rem' }}>
       <div style={{ maxWidth: '800px', margin: '0 auto' }}>
-        <p className="mono" style={{ fontSize: '0.7rem', letterSpacing: '0.2em', color: 'var(--sepia)', textTransform: 'uppercase', marginBottom: '1rem' }}>
+        <p className="mono" style={{ fontSize: '0.7rem', letterSpacing: '0.2em', color: 'var(--sepia-light)', textTransform: 'uppercase', marginBottom: '1rem' }}>
           Catalogação
         </p>
         <h1 style={{ fontFamily: 'var(--font-display)', fontStyle: 'italic', fontSize: 'clamp(2rem,4vw,3rem)', marginBottom: '1.5rem', color: 'var(--parchment)' }}>
@@ -21,7 +21,7 @@ export default function CatalogacaoPage() {
               Estrutura de Organização
             </h2>
             <p>
-              O acervo está organizado em <strong style={{ color: 'var(--sepia)' }}>coleções temáticas</strong>, subdivididas em
+              O acervo está organizado em <strong style={{ color: 'var(--sepia-light)' }}>coleções temáticas</strong>, subdivididas em
               álbuns que reúnem documentos por critérios de proximidade temática, cronológica ou tipológica.
               Cada item recebe tratamento descritivo individual, com preenchimento de campos de metadados padronizados.
             </p>
@@ -31,7 +31,7 @@ export default function CatalogacaoPage() {
             <h2 style={{ fontFamily: 'var(--font-display)', fontSize: '1.4rem', color: 'var(--parchment)', marginBottom: '1rem' }}>
               Campos de Metadados
             </h2>
-            <div style={{ display: 'grid', gap: '0', border: '1px solid rgba(200,169,110,0.2)' }}>
+            <div style={{ display: 'grid', gap: '0', border: '1px solid rgba(80,112,96,0.25)' }}>
               {[
                 ['Título', 'Nome ou descrição curta da fotografia'],
                 ['Tema / Categoria', 'Ex.: Movimentos dos Trabalhadores'],
@@ -44,17 +44,17 @@ export default function CatalogacaoPage() {
                 <div key={i} style={{
                   display: 'grid',
                   gridTemplateColumns: '180px 1fr',
-                  borderBottom: i < 6 ? '1px solid rgba(200,169,110,0.1)' : 'none',
+                  borderBottom: i < 6 ? '1px solid rgba(80,112,96,0.12)' : 'none',
                 }}>
                   <div style={{
                     padding: '12px 16px',
                     fontFamily: 'var(--font-mono)',
                     fontSize: '0.72rem',
                     letterSpacing: '0.06em',
-                    color: 'var(--sepia)',
+                    color: 'var(--sepia-light)',
                     textTransform: 'uppercase',
-                    borderRight: '1px solid rgba(200,169,110,0.1)',
-                    background: 'rgba(200,169,110,0.03)',
+                    borderRight: '1px solid rgba(80,112,96,0.12)',
+                    background: 'rgba(80,112,96,0.04)',
                   }}>
                     {campo}
                   </div>
@@ -71,7 +71,7 @@ export default function CatalogacaoPage() {
               Normas de Referência
             </h2>
             <p>
-              A descrição segue as orientações do <strong style={{ color: 'var(--sepia)' }}>Conselho Nacional de Arquivos (CONARQ)</strong> e
+              A descrição segue as orientações do <strong style={{ color: 'var(--sepia-light)' }}>Conselho Nacional de Arquivos (CONARQ)</strong> e
               as normas internacionais de descrição arquivística ISAD(G), adaptadas à natureza fotográfica do acervo.
             </p>
           </div>

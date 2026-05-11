@@ -100,9 +100,9 @@ export default function App() {
           position="bottom-right"
           toastOptions={{
             style: {
-              background: '#221e19',
-              color: '#f5f0e8',
-              border: '1px solid rgba(200,169,110,0.2)',
+              background: '#252928',
+              color: '#F2EDD8',
+              border: '1px solid rgba(80,112,96,0.2)',
               fontFamily: "'DM Mono', monospace",
               fontSize: '0.8rem',
               letterSpacing: '0.04em',

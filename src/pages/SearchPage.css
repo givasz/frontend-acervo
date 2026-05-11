@@ -7,14 +7,14 @@
 }
 .search-page__hero-bg {
   position: absolute; inset: 0;
-  background: radial-gradient(ellipse 80% 60% at 50% 100%, rgba(139,105,20,0.1) 0%, transparent 70%);
+  background: radial-gradient(ellipse 80% 60% at 50% 100%, rgba(80,112,96,0.12) 0%, transparent 70%);
 }
 .search-page__hero-content { position: relative; max-width: 800px; margin: 0 auto; text-align: center; }
 .search-page__title {
   font-size: clamp(2.5rem, 5vw, 4rem);
   margin-bottom: 2rem;
 }
-.search-page__title em { font-style: italic; color: var(--sepia); }
+.search-page__title em { font-style: italic; color: var(--sepia-light); }
 
 .search-form {
   display: flex;
@@ -32,7 +32,7 @@
 .search-form__input {
   width: 100%;
   background: var(--surface);
-  border: 1px solid #3a3530;
+  border: 1px solid #344038;
   color: var(--parchment);
   padding: 13px 16px 13px 46px;
   font-family: var(--font-body);
@@ -57,7 +57,7 @@
 }
 .search-result-card {
   background: var(--surface);
-  border: 1px solid #2e2a25;
+  border: 1px solid #3A4040;
   overflow: hidden;
   transition: all 280ms ease;
   text-decoration: none;
@@ -70,7 +70,7 @@
 .search-result-card:hover .search-result-card__img img { transform: scale(1.05); }
 .search-result-card__overlay {
   position: absolute; inset: 0;
-  background: rgba(14,12,10,0.5);
+  background: rgba(30,34,32,0.6);
   display: flex; align-items: center; justify-content: center;
   color: var(--parchment);
   opacity: 0; transition: opacity var(--transition);
@@ -78,7 +78,7 @@
 .search-result-card:hover .search-result-card__overlay { opacity: 1; }
 .search-result-card__body { padding: 14px 16px 18px; display: flex; flex-direction: column; gap: 5px; }
 .search-result-card__title { font-style: italic; font-size: 1rem; color: var(--parchment); }
-.search-result-card__col { font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--sepia); }
+.search-result-card__col { font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--sepia-light); }
 .search-result-card__type { font-size: 0.85rem; color: var(--ash); }
 .search-result-card__tags { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 6px; }
 

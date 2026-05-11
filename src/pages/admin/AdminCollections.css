@@ -8,7 +8,7 @@
   font-size: 0.9rem;
 }
 .admin-table thead tr {
-  border-bottom: 2px solid rgba(200,169,110,0.2);
+  border-bottom: 2px solid rgba(80,112,96,0.2);
 }
 .admin-table th {
   font-family: var(--font-mono);
@@ -40,7 +40,7 @@
   transition: all var(--transition);
   text-decoration: none;
 }
-.admin-action-btn:hover { color: var(--sepia); border-color: var(--sepia-dark); background: rgba(200,169,110,0.06); }
+.admin-action-btn:hover { color: var(--sepia-light); border-color: var(--sepia); background: rgba(80,112,96,0.08); }
 .admin-action-btn--danger:hover { color: var(--rust-light); border-color: var(--rust); background: rgba(155,58,26,0.08); }
 
 .admin-loading, .admin-empty {
@@ -67,7 +67,7 @@
 }
 .modal {
   background: var(--surface);
-  border: 1px solid rgba(200,169,110,0.2);
+  border: 1px solid rgba(80,112,96,0.2);
   width: 100%;
   max-width: 560px;
   max-height: 90vh;
@@ -76,7 +76,7 @@
 }
 .modal__header {
   padding: 1.5rem 2rem;
-  border-bottom: 1px solid rgba(200,169,110,0.1);
+  border-bottom: 1px solid rgba(80,112,96,0.12);
 }
 .modal__title { font-size: 1.3rem; font-style: italic; }
 .modal__body {

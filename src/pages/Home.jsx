@@ -82,6 +82,10 @@ export default function Home() {
                     : <div className="collection-card__no-cover"><Archive size={40} /></div>
                   }
                   <div className="collection-card__overlay" />
+                  <div className="collection-card__hover-overlay">
+                    <span className="collection-card__hover-title">{col.name}</span>
+                    <span className="btn btn-primary btn-sm">Ver coleção</span>
+                  </div>
                   <div className="collection-card__badge mono">{col.album_count} álbuns</div>
                 </div>
                 <div className="collection-card__body">

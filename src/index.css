@@ -17,18 +17,27 @@ img {
 }
 
 :root {
-  --ink: #0e0c0a;
-  --parchment: #f5f0e8;
-  --sepia: #c8a96e;
-  --sepia-dark: #8b6914;
-  --sepia-light: #e8d9b5;
+  /* ── Fundos e superfícies — grafite-verde quente ── */
+  --ink: #1E2220;
+  --parchment: #F2EDD8;
+  --fog: #D4C4A8;
+  --ash: #8A9490;
+  --dim: #2A2E2C;
+  --panel: #161A18;
+  --surface: #252928;
+
+  /* ── Acento primário: verde-sálvia (substituiu o dourado) ── */
+  --sepia: #507060;
+  --sepia-dark: #4A6B5A;
+  --sepia-light: #8BAF98;
+
+  /* ── Acento secundário: terracota ── */
+  --terracotta: #B87860;
+  --terracotta-light: #C8966A;
+
+  /* ── Perigo/destrutivo (mantido) ── */
   --rust: #9b3a1a;
   --rust-light: #c44e25;
-  --fog: #d4ccc0;
-  --ash: #6b6560;
-  --dim: #2a2520;
-  --panel: #1a1612;
-  --surface: #221e19;
 
   --font-display: 'Playfair Display', Georgia, serif;
   --font-body: 'Cormorant Garamond', Georgia, serif;
@@ -70,7 +79,7 @@ input, textarea, select { font: inherit; }
 /* Scrollbar */
 ::-webkit-scrollbar { width: 6px; height: 6px; }
 ::-webkit-scrollbar-track { background: var(--dim); }
-::-webkit-scrollbar-thumb { background: var(--sepia-dark); border-radius: 3px; }
+::-webkit-scrollbar-thumb { background: var(--sepia); border-radius: 3px; }
 
 /* Typography */
 h1, h2, h3, h4 { font-family: var(--font-display); font-weight: 400; line-height: 1.2; }
@@ -107,22 +116,22 @@ h1, h2, h3, h4 { font-family: var(--font-display); font-weight: 400; line-height
 .tag {
   display: inline-block;
   padding: 2px 10px;
-  border: 1px solid var(--sepia-dark);
+  border: 1px solid var(--sepia);
   border-radius: 999px;
   font-family: var(--font-mono);
   font-size: 0.7rem;
-  color: var(--sepia);
+  color: var(--sepia-light);
   letter-spacing: 0.05em;
   transition: var(--transition);
 }
-.tag:hover { background: var(--sepia-dark); color: var(--ink); }
+.tag:hover { background: var(--sepia); color: var(--parchment); }
 
 /* Form elements */
 .form-group { display: flex; flex-direction: column; gap: 6px; }
 .form-label { font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ash); }
 .form-input {
   background: var(--dim);
-  border: 1px solid #3a3530;
+  border: 1px solid #344038;
   color: var(--parchment);
   padding: 10px 14px;
   border-radius: var(--radius);
@@ -130,7 +139,7 @@ h1, h2, h3, h4 { font-family: var(--font-display); font-weight: 400; line-height
   width: 100%;
   font-size: 0.95rem;
 }
-.form-input:focus { outline: none; border-color: var(--sepia); box-shadow: 0 0 0 2px rgba(200,169,110,0.15); }
+.form-input:focus { outline: none; border-color: var(--sepia); box-shadow: 0 0 0 2px rgba(80,112,96,0.18); }
 .form-input::placeholder { color: var(--ash); }
 textarea.form-input { resize: vertical; min-height: 100px; }
 
@@ -149,15 +158,15 @@ textarea.form-input { resize: vertical; min-height: 100px; }
 }
 .btn-primary {
   background: var(--sepia);
-  color: var(--ink);
+  color: var(--parchment);
   font-weight: 500;
 }
 .btn-primary:hover { background: var(--sepia-dark); transform: translateY(-1px); }
 .btn-ghost {
-  border: 1px solid var(--sepia-dark);
-  color: var(--sepia);
+  border: 1px solid var(--sepia-light);
+  color: var(--sepia-light);
 }
-.btn-ghost:hover { background: rgba(200,169,110,0.1); }
+.btn-ghost:hover { background: rgba(80,112,96,0.12); }
 .btn-danger {
   border: 1px solid var(--rust);
   color: var(--rust-light);
@@ -169,9 +178,9 @@ textarea.form-input { resize: vertical; min-height: 100px; }
 /* Cards */
 .card {
   background: var(--surface);
-  border: 1px solid #2e2a25;
+  border: 1px solid #3A4040;
   border-radius: var(--radius);
   overflow: hidden;
   transition: var(--transition);
 }
-.card:hover { border-color: var(--sepia-dark); }
+.card:hover { border-color: var(--sepia); }

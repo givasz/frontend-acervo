@@ -49,7 +49,7 @@ export default function AdminImages() {
           ) : (
             <div style={{display:'grid',gridTemplateColumns:'repeat(auto-fill,minmax(160px,1fr))',gap:'10px'}}>
               {images.map(img => (
-                <div key={img.id} style={{background:'var(--surface)',border:'1px solid #2e2a25',overflow:'hidden'}}>
+                <div key={img.id} style={{background:'var(--surface)',border:'1px solid #3A4040',overflow:'hidden'}}>
                   <img src={`${API}${img.url}`} alt={img.title||''} style={{width:'100%',height:'130px',objectFit:'cover'}} loading="lazy" />
                   <div style={{padding:'8px 10px'}}>
                     <span style={{fontStyle:'italic',fontSize:'0.82rem',display:'block',whiteSpace:'nowrap',overflow:'hidden',textOverflow:'ellipsis'}}>{img.title||'Sem título'}</span>

@@ -110,7 +110,7 @@ export default function AdminSettings() {
       <div style={{padding:'2.5rem',display:'flex',flexDirection:'column',gap:'2rem',maxWidth:'820px'}}>
 
         {/* Metadata fields config */}
-        <div style={{background:'var(--surface)',border:'1px solid #2e2a25',padding:'2rem'}}>
+        <div style={{background:'var(--surface)',border:'1px solid #3A4040',padding:'2rem'}}>
           <div style={{display:'flex',alignItems:'center',justifyContent:'space-between',marginBottom:'0.5rem'}}>
             <h2 style={{fontStyle:'italic'}}>Campos de Metadados das Imagens</h2>
             <button className="btn btn-ghost btn-sm mono" onClick={resetFields} style={{fontSize:'0.65rem'}}>Restaurar padrão</button>
@@ -127,8 +127,8 @@ export default function AdminSettings() {
                 <div key={f.key} style={{
                   display:'flex',alignItems:'center',gap:'12px',
                   padding:'10px 14px',
-                  background: f.visible ? 'rgba(200,169,110,0.04)' : 'transparent',
-                  border:`1px solid ${f.visible ? 'rgba(200,169,110,0.2)' : '#2e2a25'}`,
+                  background: f.visible ? 'rgba(80,112,96,0.05)' : 'transparent',
+                  border:`1px solid ${f.visible ? 'rgba(80,112,96,0.2)' : '#3A4040'}`,
                   transition:'all 0.2s',
                 }}>
                   <GripVertical size={14} style={{color:'var(--ash)',flexShrink:0}} />
@@ -168,7 +168,7 @@ export default function AdminSettings() {
         </div>
 
         {/* Custom global fields */}
-        <div style={{background:'var(--surface)',border:'1px solid #2e2a25',padding:'2rem'}}>
+        <div style={{background:'var(--surface)',border:'1px solid #3A4040',padding:'2rem'}}>
           <h2 style={{fontStyle:'italic',marginBottom:'0.5rem'}}>Campos Personalizados do Acervo</h2>
           <p className="mono" style={{fontSize:'0.7rem',color:'var(--ash)',letterSpacing:'0.06em',marginBottom:'1.5rem'}}>
             Campos extras que aparecem no formulário de todas as imagens. Defina aqui, preencha por imagem no álbum.
@@ -177,7 +177,7 @@ export default function AdminSettings() {
           {customFields.length > 0 && (
             <div style={{display:'flex',flexDirection:'column',gap:'8px',marginBottom:'1rem'}}>
               {customFields.map(f => (
-                <div key={f.key} style={{display:'flex',alignItems:'center',gap:'10px',padding:'8px 12px',border:'1px solid #2e2a25',background:'rgba(200,169,110,0.03)'}}>
+                <div key={f.key} style={{display:'flex',alignItems:'center',gap:'10px',padding:'8px 12px',border:'1px solid #3A4040',background:'rgba(80,112,96,0.04)'}}>
                   <span className="mono" style={{fontSize:'0.62rem',color:'var(--ash)',letterSpacing:'0.08em',flexShrink:0,width:'130px'}}>{f.key}</span>
                   <input
                     className="form-input"
@@ -213,7 +213,7 @@ export default function AdminSettings() {
         </div>
 
         {/* Account info */}
-        <div style={{background:'var(--surface)',border:'1px solid #2e2a25',padding:'2rem'}}>
+        <div style={{background:'var(--surface)',border:'1px solid #3A4040',padding:'2rem'}}>
           <h2 style={{fontStyle:'italic',marginBottom:'1.5rem'}}>Informações da Conta</h2>
           <div className="form-group">
             <label className="form-label">Nome</label>
@@ -226,7 +226,7 @@ export default function AdminSettings() {
         </div>
 
         {/* Change password */}
-        <div style={{background:'var(--surface)',border:'1px solid #2e2a25',padding:'2rem'}}>
+        <div style={{background:'var(--surface)',border:'1px solid #3A4040',padding:'2rem'}}>
           <h2 style={{fontStyle:'italic',marginBottom:'1.5rem'}}>Alterar Senha</h2>
           <form onSubmit={handleSubmit} style={{display:'flex',flexDirection:'column',gap:'16px'}}>
             <div className="form-group">

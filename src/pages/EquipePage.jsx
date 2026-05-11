@@ -36,7 +36,7 @@ export default function EquipePage() {
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(260px, 1fr))', gap: '2rem' }}>
             {membros.map((m, i) => (
               <div key={i} style={{
-                border: '1px solid rgba(200,169,110,0.2)',
+                border: '1px solid rgba(80,112,96,0.2)',
                 background: 'var(--panel)',
                 overflow: 'hidden',
               }}>
@@ -47,7 +47,7 @@ export default function EquipePage() {
                     style={{ width: '100%', height: '220px', objectFit: 'cover', objectPosition: 'top', display: 'block' }}
                   />
                 ) : (
-                  <div style={{ width: '100%', height: '220px', background: 'rgba(200,169,110,0.05)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                  <div style={{ width: '100%', height: '220px', background: 'rgba(80,112,96,0.06)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                     <Users size={48} style={{ opacity: 0.2, color: 'var(--sepia)' }} />
                   </div>
                 )}
