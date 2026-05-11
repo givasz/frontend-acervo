@@ -25,7 +25,7 @@ export default function CoverPicker({ value, onChange, label = 'Imagem de Capa' 
           <img
             src={preview}
             alt="capa"
-            style={{ width: '100%', maxHeight: '180px', objectFit: 'cover', display: 'block', cursor: 'pointer', border: '1px solid #3A4040' }}
+            style={{ width: '100%', maxHeight: '180px', objectFit: 'cover', display: 'block', cursor: 'pointer', border: '1px solid #2A2826' }}
             onClick={() => ref.current?.click()}
           />
           <button
@@ -33,7 +33,7 @@ export default function CoverPicker({ value, onChange, label = 'Imagem de Capa' 
             onClick={() => onChange(null)}
             style={{
               position: 'absolute', top: 6, right: 6,
-              background: 'rgba(30,34,32,0.88)', border: '1px solid #344038',
+              background: 'rgba(20,18,16,0.88)', border: '1px solid #2E2C28',
               color: 'var(--fog)', padding: '4px', display: 'flex', alignItems: 'center', cursor: 'pointer',
             }}
             title="Remover capa"
@@ -55,11 +55,11 @@ export default function CoverPicker({ value, onChange, label = 'Imagem de Capa' 
           style={{
             display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center',
             gap: 8, width: '100%', padding: '28px 0',
-            border: '1px dashed #344038', color: 'var(--ash)',
+            border: '1px dashed #2E2C28', color: 'var(--ash)',
             cursor: 'pointer', transition: 'border-color 0.2s, color 0.2s',
           }}
           onMouseEnter={e => { e.currentTarget.style.borderColor = 'var(--sepia)'; e.currentTarget.style.color = 'var(--sepia)'; }}
-          onMouseLeave={e => { e.currentTarget.style.borderColor = '#344038'; e.currentTarget.style.color = 'var(--ash)'; }}
+          onMouseLeave={e => { e.currentTarget.style.borderColor = '#2E2C28'; e.currentTarget.style.color = 'var(--ash)'; }}
         >
           <ImagePlus size={22} />
           <span className="mono" style={{ fontSize: '0.7rem', letterSpacing: '0.08em' }}>Selecionar imagem de capa</span>

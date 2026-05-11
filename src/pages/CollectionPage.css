@@ -20,7 +20,7 @@
 .collection-page__header-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to top, rgba(30,34,32,0.95) 0%, rgba(30,34,32,0.4) 50%, rgba(30,34,32,0.7) 100%);
+  background: linear-gradient(to top, rgba(20,18,16,0.95) 0%, rgba(20,18,16,0.4) 50%, rgba(20,18,16,0.7) 100%);
 }
 .collection-page__header-content {
   position: relative;
@@ -80,7 +80,7 @@
   display: flex;
   flex-direction: column;
   background: var(--surface);
-  border: 1px solid #3A4040;
+  border: 1px solid #2A2826;
   overflow: hidden;
   transition: all 300ms ease;
   text-decoration: none;
@@ -112,7 +112,7 @@
 .album-card__overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to top, rgba(30,34,32,0.4), transparent);
+  background: linear-gradient(to top, rgba(20,18,16,0.4), transparent);
 }
 .album-card__body { padding: 18px 20px 22px; display: flex; flex-direction: column; gap: 6px; }
 .album-card__title { font-size: 1.15rem; font-style: italic; color: var(--parchment); }

@@ -167,7 +167,7 @@ export default function AdminAlbumDetail() {
               title="Clique para trocar a capa"
               style={{
                 width:80, height:80, flexShrink:0, cursor:'pointer',
-                border:'1px solid #344038', position:'relative', overflow:'hidden',
+                border:'1px solid #2E2C28', position:'relative', overflow:'hidden',
                 background:'var(--dim)',
               }}
             >

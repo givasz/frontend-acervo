@@ -36,7 +36,7 @@ export default function ProducoesAcademicasPage() {
           <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
             {producoes.map((p, i) => (
               <div key={i} style={{
-                border: '1px solid rgba(80,112,96,0.2)',
+                border: '1px solid rgba(196,168,130,0.15)',
                 padding: '1.75rem',
                 background: 'var(--panel)',
                 transition: 'border-color 200ms',
@@ -74,10 +74,10 @@ export default function ProducoesAcademicasPage() {
                         display: 'flex', alignItems: 'center', gap: '6px', flexShrink: 0,
                         fontFamily: 'var(--font-mono)', fontSize: '0.7rem', letterSpacing: '0.1em',
                         color: 'var(--sepia)', textTransform: 'uppercase', textDecoration: 'none',
-                        border: '1px solid rgba(80,112,96,0.3)', padding: '8px 14px',
+                        border: '1px solid rgba(196,168,130,0.25)', padding: '8px 14px',
                         transition: 'all 200ms',
                       }}
-                      onMouseEnter={e => e.currentTarget.style.background = 'rgba(80,112,96,0.12)'}
+                      onMouseEnter={e => e.currentTarget.style.background = 'rgba(196,168,130,0.08)'}
                       onMouseLeave={e => e.currentTarget.style.background = 'transparent'}
                     >
                       <ExternalLink size={13} />

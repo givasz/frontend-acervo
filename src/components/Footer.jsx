@@ -5,7 +5,7 @@ export default function Footer() {
   return (
     <footer style={{
       background: 'var(--panel)',
-      borderTop: '1px solid rgba(80,112,96,0.15)',
+      borderTop: '1px solid rgba(196,168,130,0.15)',
       padding: '3rem 2rem',
       marginTop: 'auto',
     }}>

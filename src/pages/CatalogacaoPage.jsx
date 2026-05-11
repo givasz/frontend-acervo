@@ -31,7 +31,7 @@ export default function CatalogacaoPage() {
             <h2 style={{ fontFamily: 'var(--font-display)', fontSize: '1.4rem', color: 'var(--parchment)', marginBottom: '1rem' }}>
               Campos de Metadados
             </h2>
-            <div style={{ display: 'grid', gap: '0', border: '1px solid rgba(80,112,96,0.25)' }}>
+            <div style={{ display: 'grid', gap: '0', border: '1px solid rgba(196,168,130,0.15)' }}>
               {[
                 ['Título', 'Nome ou descrição curta da fotografia'],
                 ['Tema / Categoria', 'Ex.: Movimentos dos Trabalhadores'],
@@ -44,7 +44,7 @@ export default function CatalogacaoPage() {
                 <div key={i} style={{
                   display: 'grid',
                   gridTemplateColumns: '180px 1fr',
-                  borderBottom: i < 6 ? '1px solid rgba(80,112,96,0.12)' : 'none',
+                  borderBottom: i < 6 ? '1px solid rgba(196,168,130,0.08)' : 'none',
                 }}>
                   <div style={{
                     padding: '12px 16px',
@@ -53,8 +53,8 @@ export default function CatalogacaoPage() {
                     letterSpacing: '0.06em',
                     color: 'var(--sepia-light)',
                     textTransform: 'uppercase',
-                    borderRight: '1px solid rgba(80,112,96,0.12)',
-                    background: 'rgba(80,112,96,0.04)',
+                    borderRight: '1px solid rgba(196,168,130,0.08)',
+                    background: 'rgba(196,168,130,0.03)',
                   }}>
                     {campo}
                   </div>

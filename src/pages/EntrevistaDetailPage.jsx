@@ -69,7 +69,7 @@ export default function EntrevistaDetailPage() {
         {/* Texto sobre o entrevistado */}
         {video.descricao && (
           <div style={{
-            borderLeft: '2px solid rgba(80,112,96,0.4)',
+            borderLeft: '2px solid rgba(196,168,130,0.3)',
             paddingLeft: '1.5rem',
             marginTop: '1.5rem',
           }}>

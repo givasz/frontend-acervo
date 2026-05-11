@@ -41,20 +41,20 @@ export default function EntrevistasPage() {
                 to={`/material-complementar/entrevistas/${v.id}`}
                 style={{ textDecoration: 'none', display: 'block' }}
                 onMouseEnter={e => {
-                  e.currentTarget.querySelector('.card').style.borderColor = 'rgba(80,112,96,0.5)';
+                  e.currentTarget.querySelector('.card').style.borderColor = 'rgba(196,168,130,0.4)';
                   e.currentTarget.querySelector('.card').style.transform = 'translateY(-4px)';
                   e.currentTarget.querySelector('.play-btn').style.transform = 'translate(-50%,-50%) scale(1.15)';
                   e.currentTarget.querySelector('.thumb').style.opacity = '1';
                 }}
                 onMouseLeave={e => {
-                  e.currentTarget.querySelector('.card').style.borderColor = 'rgba(80,112,96,0.18)';
+                  e.currentTarget.querySelector('.card').style.borderColor = 'rgba(196,168,130,0.15)';
                   e.currentTarget.querySelector('.card').style.transform = 'translateY(0)';
                   e.currentTarget.querySelector('.play-btn').style.transform = 'translate(-50%,-50%) scale(1)';
                   e.currentTarget.querySelector('.thumb').style.opacity = '0.8';
                 }}
               >
                 <div className="card" style={{
-                  border: '1px solid rgba(80,112,96,0.18)',
+                  border: '1px solid rgba(196,168,130,0.15)',
                   background: 'var(--panel)',
                   overflow: 'hidden',
                   transition: 'border-color 250ms, transform 250ms',
@@ -75,11 +75,11 @@ export default function EntrevistasPage() {
                       transform: 'translate(-50%,-50%)',
                       width: 52, height: 52, borderRadius: '50%',
                       background: 'rgba(0,0,0,0.65)',
-                      border: '1.5px solid rgba(80,112,96,0.7)',
+                      border: '1.5px solid rgba(196,168,130,0.5)',
                       display: 'flex', alignItems: 'center', justifyContent: 'center',
                       transition: 'transform 250ms',
                     }}>
-                      <Play size={20} fill="rgba(139,175,152,0.9)" color="rgba(139,175,152,0.9)" style={{ marginLeft: 3 }} />
+                      <Play size={20} fill="rgba(196,168,130,0.9)" color="rgba(196,168,130,0.9)" style={{ marginLeft: 3 }} />
                     </div>
                   </div>
 

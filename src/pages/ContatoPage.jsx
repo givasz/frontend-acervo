@@ -24,12 +24,12 @@ export default function ContatoPage() {
           value={form[key]}
           onChange={e => setForm(f => ({ ...f, [key]: e.target.value }))}
           style={{
-            background: 'var(--panel)', border: '1px solid rgba(80,112,96,0.2)',
+            background: 'var(--panel)', border: '1px solid rgba(196,168,130,0.15)',
             color: 'var(--parchment)', fontFamily: 'var(--font-body)', fontSize: '0.95rem',
             padding: '12px 14px', resize: 'vertical', outline: 'none',
           }}
-          onFocus={e => e.target.style.borderColor = 'rgba(80,112,96,0.5)'}
-          onBlur={e => e.target.style.borderColor = 'rgba(80,112,96,0.2)'}
+          onFocus={e => e.target.style.borderColor = 'rgba(196,168,130,0.4)'}
+          onBlur={e => e.target.style.borderColor = 'rgba(196,168,130,0.15)'}
         />
       ) : (
         <input
@@ -37,12 +37,12 @@ export default function ContatoPage() {
           value={form[key]}
           onChange={e => setForm(f => ({ ...f, [key]: e.target.value }))}
           style={{
-            background: 'var(--panel)', border: '1px solid rgba(80,112,96,0.2)',
+            background: 'var(--panel)', border: '1px solid rgba(196,168,130,0.15)',
             color: 'var(--parchment)', fontFamily: 'var(--font-body)', fontSize: '0.95rem',
             padding: '12px 14px', outline: 'none',
           }}
-          onFocus={e => e.target.style.borderColor = 'rgba(80,112,96,0.5)'}
-          onBlur={e => e.target.style.borderColor = 'rgba(80,112,96,0.2)'}
+          onFocus={e => e.target.style.borderColor = 'rgba(196,168,130,0.4)'}
+          onBlur={e => e.target.style.borderColor = 'rgba(196,168,130,0.15)'}
         />
       )}
     </div>

@@ -79,7 +79,7 @@ export default function AdminEntrevistas() {
 
       <div style={{ padding: '2rem', maxWidth: '860px' }}>
         {videos.length === 0 ? (
-          <div style={{ textAlign: 'center', padding: '4rem 2rem', border: '1px dashed #344038', color: 'var(--ash)' }}>
+          <div style={{ textAlign: 'center', padding: '4rem 2rem', border: '1px dashed #2E2C28', color: 'var(--ash)' }}>
             <Youtube size={36} style={{ margin: '0 auto 1rem', opacity: 0.3 }} />
             <p className="mono" style={{ fontSize: '0.78rem', letterSpacing: '0.1em' }}>
               Nenhuma entrevista cadastrada.
@@ -91,7 +91,7 @@ export default function AdminEntrevistas() {
         ) : (
           <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
             {videos.map((v, i) => (
-              <div key={i} style={{ background: 'var(--surface)', border: '1px solid #3A4040', padding: '1.25rem', display: 'flex', gap: '1rem', alignItems: 'flex-start' }}>
+              <div key={i} style={{ background: 'var(--surface)', border: '1px solid #2A2826', padding: '1.25rem', display: 'flex', gap: '1rem', alignItems: 'flex-start' }}>
                 <GripVertical size={16} style={{ color: 'var(--ash)', marginTop: '8px', flexShrink: 0 }} />
 
                 {/* Thumbnail preview */}

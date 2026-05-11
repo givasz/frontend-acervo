@@ -123,8 +123,8 @@ export default function AdminAlbums() {
                   <tr key={alb.id} style={{cursor:'pointer'}} onClick={() => navigate(`/admin/albuns/${alb.id}`)}>
                     <td style={{width:56}}>
                       {alb.cover_image
-                        ? <img src={`${API}${alb.cover_image}`} alt="" style={{width:48,height:48,objectFit:'cover',display:'block',border:'1px solid #3A4040'}} />
-                        : <div style={{width:48,height:48,background:'var(--dim)',border:'1px solid #3A4040'}} />
+                        ? <img src={`${API}${alb.cover_image}`} alt="" style={{width:48,height:48,objectFit:'cover',display:'block',border:'1px solid #2A2826'}} />
+                        : <div style={{width:48,height:48,background:'var(--dim)',border:'1px solid #2A2826'}} />
                       }
                     </td>
                     <td><div className="admin-table__name">{alb.title}</div>{alb.description && <div className="admin-table__desc">{alb.description}</div>}</td>

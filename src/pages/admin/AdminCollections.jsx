@@ -129,8 +129,8 @@ export default function AdminCollections() {
                 <tr key={col.id} style={{cursor:'pointer'}} onClick={() => navigate(`/admin/colecoes/${col.id}`)}>
                   <td style={{width:56}}>
                     {col.cover_image
-                      ? <img src={`${API}${col.cover_image}`} alt="" style={{width:48,height:48,objectFit:'cover',display:'block',border:'1px solid #3A4040'}} />
-                      : <div style={{width:48,height:48,background:'var(--dim)',border:'1px solid #3A4040'}} />
+                      ? <img src={`${API}${col.cover_image}`} alt="" style={{width:48,height:48,objectFit:'cover',display:'block',border:'1px solid #2A2826'}} />
+                      : <div style={{width:48,height:48,background:'var(--dim)',border:'1px solid #2A2826'}} />
                     }
                   </td>
                   <td>
