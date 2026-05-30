@@ -30,22 +30,11 @@ import AdminSettings from './pages/admin/AdminSettings';
 import AdminEntrevistas from './pages/admin/AdminEntrevistas';
 
 function SobrePage() {
-  return (
-    <div style={{ minHeight: '80vh', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '4rem 2rem' }}>
-      <div style={{ maxWidth: '700px', textAlign: 'center' }}>
-        <p className="mono" style={{ fontSize: '0.7rem', letterSpacing: '0.2em', color: 'var(--sepia)', textTransform: 'uppercase', marginBottom: '1rem' }}>A Coleção</p>
-        <h1 style={{ fontFamily: 'var(--font-display)', fontStyle: 'italic', fontSize: 'clamp(2rem,4vw,3rem)', marginBottom: '2rem' }}>
-          Sobre o Acervo<br />Maria da Conceição
-        </h1>
-        <div className="divider" style={{ maxWidth: '120px', margin: '0 auto 2rem' }} />
-        <p style={{ fontFamily: 'var(--font-body)', fontSize: '1.1rem', color: 'var(--fog)', lineHeight: 1.8 }}>
-          Este acervo é dedicado à preservação e difusão da memória histórica,
-          reunindo documentos, fotografias e registros que contam histórias
-          através do tempo. Uma coleção viva, em constante crescimento.
-        </p>
-      </div>
-    </div>
-  );
+  return <div style={{ minHeight: '80vh' }} />;
+}
+
+function PlaceholderPage() {
+  return <div style={{ minHeight: '80vh' }} />;
 }
 
 function PublicWrapper() {
@@ -79,6 +68,11 @@ function PublicWrapper() {
             <Route path="/busca" element={<SearchPage />} />
             <Route path="/sobre" element={<SobrePage />} />
             <Route path="/catalogacao" element={<CatalogacaoPage />} />
+            <Route path="/material-complementar/trabalhos-academicos" element={<ProducoesAcademicasPage />} />
+            <Route path="/material-complementar/videos" element={<EntrevistasPage />} />
+            <Route path="/material-complementar/videos/:id" element={<EntrevistaDetailPage />} />
+            <Route path="/material-complementar/poesia" element={<PlaceholderPage />} />
+            {/* rotas legadas mantidas para não quebrar links existentes */}
             <Route path="/material-complementar/entrevistas" element={<EntrevistasPage />} />
             <Route path="/material-complementar/entrevistas/:id" element={<EntrevistaDetailPage />} />
             <Route path="/material-complementar/producoes-academicas" element={<ProducoesAcademicasPage />} />

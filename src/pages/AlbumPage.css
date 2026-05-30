@@ -34,9 +34,10 @@
 .album-page__title {
   font-size: clamp(1.8rem, 4vw, 3.5rem);
   font-style: italic;
+  color: #ffffff;
   margin-bottom: 10px;
 }
-.album-page__desc { font-size: 1rem; color: var(--fog); max-width: 500px; line-height: 1.65; margin-bottom: 12px; }
+.album-page__desc { font-size: 1rem; color: rgba(255,255,255,0.7); max-width: 500px; line-height: 1.65; margin-bottom: 12px; }
 
 .gallery-section { max-width: 1400px; margin: 0 auto; padding: 3rem 2rem 8rem; }
 
@@ -81,7 +82,7 @@
   align-items: center;
   justify-content: center;
   gap: 8px;
-  color: var(--parchment);
+  color: #ffffff;
   opacity: 0;
   transition: opacity 300ms ease;
 }

@@ -13,16 +13,16 @@
 .hero__bg {
   position: absolute;
   inset: 0;
-  background: radial-gradient(ellipse 80% 60% at 70% 50%, rgba(139,105,20,0.08) 0%, transparent 70%),
-              radial-gradient(ellipse 40% 40% at 20% 80%, rgba(155,58,26,0.06) 0%, transparent 60%);
+  background: radial-gradient(ellipse 80% 60% at 70% 50%, rgba(47,13,19,0.04) 0%, transparent 70%),
+              radial-gradient(ellipse 40% 40% at 20% 80%, rgba(47,13,19,0.03) 0%, transparent 60%);
 }
 
 .hero__lines {
   position: absolute;
   inset: 0;
   background-image:
-    linear-gradient(rgba(200,169,110,0.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(200,169,110,0.04) 1px, transparent 1px);
+    linear-gradient(rgba(47,13,19,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(47,13,19,0.04) 1px, transparent 1px);
   background-size: 60px 60px;
 }
 
@@ -48,7 +48,7 @@
   font-weight: 400;
   line-height: 1.0;
   letter-spacing: -0.02em;
-  color: var(--parchment);
+  color: #2f0d13;
   opacity: 0;
   animation: fadeIn 0.8s ease 0.4s both;
 }
@@ -117,7 +117,7 @@
 .section-header__title {
   font-size: 2.5rem;
   font-style: italic;
-  color: var(--parchment);
+  color: #2f0d13;
 }
 
 .collections-grid {
@@ -130,16 +130,16 @@
   display: flex;
   flex-direction: column;
   background: var(--surface);
-  border: 1px solid #2e2a25;
+  border: 1px solid #e0dbd8;
   overflow: hidden;
   transition: all 300ms ease;
   text-decoration: none;
 }
 
 .collection-card:hover {
-  border-color: var(--sepia-dark);
+  border-color: var(--sepia);
   transform: translateY(-4px);
-  box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+  box-shadow: 0 12px 40px rgba(47,13,19,0.1);
 }
 
 .collection-card__cover {
@@ -179,8 +179,8 @@
   position: absolute;
   top: 12px;
   right: 12px;
-  background: rgba(14,12,10,0.8);
-  border: 1px solid rgba(200,169,110,0.3);
+  background: rgba(255,255,255,0.9);
+  border: 1px solid rgba(47,13,19,0.2);
   padding: 4px 10px;
   font-size: 0.68rem;
   color: var(--sepia);
@@ -198,7 +198,7 @@
 .collection-card__title {
   font-size: 1.3rem;
   font-style: italic;
-  color: var(--parchment);
+  color: #2f0d13;
 }
 
 .collection-card__desc {
