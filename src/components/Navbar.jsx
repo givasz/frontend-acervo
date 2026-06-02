@@ -1,22 +1,43 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, Search, ChevronDown, Archive } from 'lucide-react';
-import { getCollections } from '../api';
+import { Menu, X, ChevronDown, ChevronRight } from 'lucide-react';
 import './Navbar.css';
 
+const NAV = [
+  {
+    label: 'Acervo',
+    children: [
+      { label: 'Pesquisa', to: '/busca' },
+      {
+        label: 'Sobre o Acervo',
+        to: '/sobre',
+        children: [
+          { label: 'Fotografias', to: '/acervo/fotografias' },
+          { label: 'Memória Oral', to: '/acervo/memoria-oral' },
+        ],
+      },
+    ],
+  },
+  { label: 'Catalogação', to: '/catalogacao' },
+
+  {
+    label: 'Material Complementar',
+    children: [
+      { label: 'Trabalhos Acadêmicos', to: '/material-complementar/trabalhos-academicos' },
+      { label: 'Vídeos', to: '/material-complementar/videos' },
+      { label: 'Poesia', to: '/material-complementar/poesia' },
+    ],
+  },
+  { label: 'Equipe', to: '/equipe' },
+  { label: 'Contato', to: '/contato' },
+];
+
 export default function Navbar() {
-  const [collections, setCollections] = useState([]);
   const [open, setOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState(null);
-  const [searchOpen, setSearchOpen] = useState(false);
-  const [searchQ, setSearchQ] = useState('');
+  const [activeSubDropdown, setActiveSubDropdown] = useState(null);
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
-  const searchRef = useRef(null);
-
-  useEffect(() => {
-    getCollections().then(r => setCollections(r.data)).catch(() => {});
-  }, []);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40);
@@ -24,91 +45,91 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  useEffect(() => { setOpen(false); setActiveDropdown(null); }, [location]);
-
   useEffect(() => {
-    if (searchOpen) searchRef.current?.focus();
-  }, [searchOpen]);
-
-  const handleSearch = (e) => {
-    e.preventDefault();
-    if (searchQ.trim()) {
-      window.location.href = `/busca?q=${encodeURIComponent(searchQ)}`;
-    }
-  };
+    setOpen(false);
+    setActiveDropdown(null);
+    setActiveSubDropdown(null);
+  }, [location]);
 
   return (
     <nav className={`navbar ${scrolled ? 'navbar--scrolled' : ''}`}>
       <div className="navbar__inner">
+
         <Link to="/" className="navbar__brand">
-          <div className="navbar__brand-icon"><Archive size={18} /></div>
-          <div className="navbar__brand-text">
-            <span className="navbar__brand-title">Acervo</span>
-            <span className="navbar__brand-subtitle">Maria da Conceição</span>
-          </div>
+          <img src="/logo.png" alt="Logo" className="navbar__logo" />
         </Link>
 
         <div className="navbar__links">
-          {/* 1. Acervo — dropdown com coleções */}
-          <div
-            className="navbar__item navbar__item--dropdown"
-            onMouseEnter={() => setActiveDropdown('acervo')}
-            onMouseLeave={() => setActiveDropdown(null)}
-          >
-            <span className="navbar__link">
-              Acervo <ChevronDown size={14} className={`navbar__chevron ${activeDropdown === 'acervo' ? 'open' : ''}`} />
-            </span>
-            <div className={`navbar__dropdown ${activeDropdown === 'acervo' ? 'visible' : ''}`}>
-              <div className="navbar__dropdown-inner">
-                {collections.length === 0 && <span className="navbar__dropdown-empty">Nenhuma coleção</span>}
-                {collections.map(col => (
-                  <Link key={col.id} to={`/acervo/${col.slug}`} className="navbar__dropdown-item">
-                    {col.name}
-                  </Link>
-                ))}
+          {NAV.map((item) =>
+            item.children ? (
+              <div
+                key={item.label}
+                className="navbar__item"
+                onClick={() => {
+                  setActiveDropdown(activeDropdown === item.label ? null : item.label);
+                  setActiveSubDropdown(null);
+                }}
+              >
+                <span className={`navbar__link${activeDropdown === item.label ? ' navbar__link--open' : ''}`}>
+                  {item.label}
+                  <ChevronDown
+                    size={13}
+                    className={`navbar__chevron${activeDropdown === item.label ? ' open' : ''}`}
+                  />
+                </span>
+
+                <div className={`navbar__dropdown${activeDropdown === item.label ? ' visible' : ''}`}>
+                  <div className="navbar__dropdown-inner">
+                    {item.children.map(child =>
+                      child.children ? (
+                        <div
+                          key={child.label}
+                          className="navbar__dropdown-item navbar__dropdown-item--parent"
+                          onMouseEnter={() => setActiveSubDropdown(child.label)}
+                          onMouseLeave={() => setActiveSubDropdown(null)}
+                          onClick={e => e.stopPropagation()}
+                        >
+                          <span>{child.label}</span>
+                          <ChevronRight size={12} className="navbar__sub-chevron" />
+
+                          <div className={`navbar__subdropdown${activeSubDropdown === child.label ? ' visible' : ''}`}>
+                            <div className="navbar__subdropdown-inner">
+                              <Link to={child.to} className="navbar__dropdown-item">
+                                {child.label}
+                              </Link>
+                              <div className="navbar__subdropdown-divider" />
+                              {child.children.map(sub => (
+                                <Link key={sub.to} to={sub.to} className="navbar__dropdown-item">
+                                  {sub.label}
+                                </Link>
+                              ))}
+                            </div>
+                          </div>
+                        </div>
+                      ) : (
+                        <Link
+                          key={child.to}
+                          to={child.to}
+                          className="navbar__dropdown-item"
+                          onClick={e => e.stopPropagation()}
+                        >
+                          {child.label}
+                        </Link>
+                      )
+                    )}
+                  </div>
+                </div>
               </div>
-            </div>
-          </div>
-
-          {/* 2. O Acervo */}
-          <Link to="/sobre" className="navbar__link">O Acervo</Link>
-
-          {/* 3. Pesquisa */}
-          <Link to="/busca" className="navbar__link">Pesquisa</Link>
-
-          {/* 4. Catalogação */}
-          <Link to="/catalogacao" className="navbar__link">Catalogação</Link>
-
-          {/* 5. Material Complementar — dropdown */}
-          <div
-            className="navbar__item navbar__item--dropdown"
-            onMouseEnter={() => setActiveDropdown('material')}
-            onMouseLeave={() => setActiveDropdown(null)}
-          >
-            <span className="navbar__link">
-              Material Complementar <ChevronDown size={14} className={`navbar__chevron ${activeDropdown === 'material' ? 'open' : ''}`} />
-            </span>
-            <div className={`navbar__dropdown ${activeDropdown === 'material' ? 'visible' : ''}`}>
-              <div className="navbar__dropdown-inner">
-                <Link to="/material-complementar/entrevistas" className="navbar__dropdown-item">
-                  Entrevistas
-                </Link>
-                <Link to="/material-complementar/producoes-academicas" className="navbar__dropdown-item">
-                  Produções Acadêmicas
-                </Link>
-              </div>
-            </div>
-          </div>
-
-          {/* 6. Equipe */}
-          <Link to="/equipe" className="navbar__link">Equipe</Link>
-
-          {/* 7. Contato */}
-          <Link to="/contato" className="navbar__link">Contato</Link>
-
-          <button className="navbar__search-btn" onClick={() => setSearchOpen(s => !s)}>
-            {searchOpen ? <X size={18} /> : <Search size={18} />}
-          </button>
+            ) : (
+              <Link
+                key={item.to}
+                to={item.to}
+                className={`navbar__link${location.pathname === item.to ? ' navbar__link--active' : ''}`}
+              >
+                {item.label}
+              </Link>
+            )
+          )}
         </div>
 
         <button className="navbar__mobile-toggle" onClick={() => setOpen(s => !s)}>
@@ -116,40 +137,35 @@ export default function Navbar() {
         </button>
       </div>
 
-      {searchOpen && (
-        <div className="navbar__search-bar animate-fade">
-          <form onSubmit={handleSearch} className="navbar__search-form">
-            <Search size={16} className="navbar__search-icon" />
-            <input
-              ref={searchRef}
-              value={searchQ}
-              onChange={e => setSearchQ(e.target.value)}
-              placeholder="Buscar no acervo por título, tags, conteúdo..."
-              className="navbar__search-input"
-            />
-            <button type="submit" className="btn btn-primary btn-sm">Buscar</button>
-          </form>
-        </div>
-      )}
-
       {open && (
         <div className="navbar__mobile-menu animate-slide">
-          <div className="navbar__mobile-section">
-            <span className="navbar__mobile-label">Acervo</span>
-            {collections.map(col => (
-              <Link key={col.id} to={`/acervo/${col.slug}`} className="navbar__mobile-link">{col.name}</Link>
-            ))}
-          </div>
-          <Link to="/sobre" className="navbar__mobile-link">O Acervo</Link>
-          <Link to="/busca" className="navbar__mobile-link">Pesquisa</Link>
-          <Link to="/catalogacao" className="navbar__mobile-link">Catalogação</Link>
-          <div className="navbar__mobile-section" style={{ marginTop: '12px' }}>
-            <span className="navbar__mobile-label">Material Complementar</span>
-            <Link to="/material-complementar/entrevistas" className="navbar__mobile-link">Entrevistas</Link>
-            <Link to="/material-complementar/producoes-academicas" className="navbar__mobile-link">Produções Acadêmicas</Link>
-          </div>
-          <Link to="/equipe" className="navbar__mobile-link">Equipe</Link>
-          <Link to="/contato" className="navbar__mobile-link">Contato</Link>
+          {NAV.map((item) =>
+            item.children ? (
+              <div key={item.label} className="navbar__mobile-section">
+                <span className="navbar__mobile-label">{item.label}</span>
+                {item.children.map(child =>
+                  child.children ? (
+                    <div key={child.label}>
+                      <Link to={child.to} className="navbar__mobile-link">{child.label}</Link>
+                      {child.children.map(sub => (
+                        <Link key={sub.to} to={sub.to} className="navbar__mobile-link navbar__mobile-link--sub">
+                          {sub.label}
+                        </Link>
+                      ))}
+                    </div>
+                  ) : (
+                    <Link key={child.to} to={child.to} className="navbar__mobile-link">
+                      {child.label}
+                    </Link>
+                  )
+                )}
+              </div>
+            ) : (
+              <Link key={item.to} to={item.to} className="navbar__mobile-link">
+                {item.label}
+              </Link>
+            )
+          )}
         </div>
       )}
     </nav>
