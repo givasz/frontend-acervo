@@ -1,0 +1,83 @@
+.page-header {
+  position: relative;
+  padding: 5rem 2rem 2.5rem;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.page-header__inner {
+  position: relative;
+  z-index: 2;
+}
+
+.page-header__eyebrow {
+  display: block;
+  font-size: 0.7rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--sepia);
+  margin-bottom: 1rem;
+}
+
+.page-header__title {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(2rem, 4.5vw, 3.2rem);
+  line-height: 1.05;
+  color: #2f0d13;
+}
+
+.page-header__rule {
+  width: 64px;
+  height: 2px;
+  margin-top: 1.4rem;
+  background: linear-gradient(90deg, var(--sepia), transparent);
+}
+
+.page-header__desc {
+  margin-top: 1.5rem;
+  max-width: 620px;
+  font-family: var(--font-body);
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: var(--fog);
+}
+
+/* Variante com imagem de banner (fundo do acervo) */
+.page-header--image {
+  max-width: none;
+  margin: 0;
+  padding: 7rem clamp(2rem, 6vw, 5rem) 3rem;
+  min-height: 42vh;
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+}
+
+.page-header__bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+.page-header__bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.page-header__overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(to top, rgba(20, 4, 8, 0.78) 0%, rgba(20, 4, 8, 0.25) 55%, rgba(20, 4, 8, 0.45) 100%);
+}
+
+.page-header--image .page-header__title { color: #fff; }
+.page-header--image .page-header__eyebrow { color: #e8c9b0; }
+.page-header--image .page-header__desc { color: rgba(255, 255, 255, 0.85); }
+.page-header--image .page-header__inner { max-width: 1100px; margin: 0 auto; width: 100%; }
+
+@media (max-width: 768px) {
+  .page-header { padding: 3.5rem 1.5rem 2rem; }
+  .page-header--image { padding: 5rem 1.5rem 2.5rem; min-height: 36vh; }
+}

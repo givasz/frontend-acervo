@@ -94,11 +94,17 @@
   color: var(--ash);
 }
 
+/* Carrossel de destaques */
+.home-carousel {
+  padding: 2rem 0 1rem;
+}
+
 /* Collections section */
 .collections-section {
   max-width: 1400px;
   margin: 0 auto;
   padding: 4rem 2rem 8rem;
+  scroll-margin-top: 90px;
 }
 
 .section-header {

@@ -1,0 +1,311 @@
+/* ───────────────────────────────────────────────
+   Estilos de conteúdo compartilhados (páginas internas)
+   ─────────────────────────────────────────────── */
+
+.content {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 2rem 6rem;
+}
+
+.content-narrow {
+  max-width: 760px;
+}
+
+/* Bloco de prosa (serifada, leitura confortável) */
+.prose p {
+  font-family: var(--font-body);
+  font-size: 1.12rem;
+  line-height: 1.85;
+  color: var(--fog);
+  margin-bottom: 1.4rem;
+}
+.prose p:last-child { margin-bottom: 0; }
+
+/* Seção com rótulo em mono */
+.content-section { margin-top: 3.5rem; }
+
+.content-section__label {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--sepia);
+  margin-bottom: 0.9rem;
+}
+
+.content-section__title {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(1.5rem, 3vw, 2.1rem);
+  color: #2f0d13;
+  margin-bottom: 1.4rem;
+}
+
+/* Linha decorativa fina */
+.content-rule {
+  height: 1px;
+  background: linear-gradient(90deg, rgba(47,13,19,0.25), transparent);
+  margin: 3.5rem 0;
+}
+
+/* ── Grade de equipe / pessoas ── */
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 2.5rem 2rem;
+  margin-top: 2rem;
+}
+
+.team-member {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0.9rem;
+}
+
+.team-member__photo {
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  object-fit: cover;
+  background: var(--dim);
+  border: 1px solid #e6dcde;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  transition: transform 300ms ease, border-color 300ms ease;
+}
+.team-member:hover .team-member__photo {
+  transform: translateY(-4px);
+  border-color: var(--sepia);
+}
+
+/* Placeholder com iniciais quando não há foto */
+.team-member__initials {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 2.4rem;
+  color: var(--sepia-light);
+}
+
+.team-member__name {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  color: #2f0d13;
+  line-height: 1.3;
+}
+
+.team-member__role {
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ash);
+}
+
+/* ── Galeria de fotografias / categorias ── */
+.photo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.photo-card {
+  position: relative;
+  display: block;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  border: 1px solid #e0dbd8;
+  background: var(--dim);
+  text-decoration: none;
+}
+.photo-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 600ms ease;
+}
+.photo-card:hover img { transform: scale(1.06); }
+
+.photo-card__no-img {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--ash);
+}
+
+.photo-card__shade {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(20,4,8,0.78) 0%, rgba(20,4,8,0.1) 55%, transparent 80%);
+}
+
+.photo-card__caption {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  padding: 1.1rem 1.3rem;
+  z-index: 2;
+}
+.photo-card__title {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.25rem;
+  color: #fff;
+  line-height: 1.2;
+}
+.photo-card__sub {
+  display: block;
+  margin-top: 0.35rem;
+  font-family: var(--font-mono);
+  font-size: 0.64rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.82);
+}
+
+/* ── Tabela acadêmica (estilo monografias) ── */
+.academic-table-wrap {
+  margin-top: 2rem;
+  border: 1px solid #e6dcde;
+  overflow-x: auto;
+}
+.academic-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 640px;
+}
+.academic-table thead th {
+  text-align: left;
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--sepia);
+  background: #faf6f4;
+  padding: 0.95rem 1.2rem;
+  border-bottom: 1px solid #e6dcde;
+  white-space: nowrap;
+}
+.academic-table tbody td {
+  padding: 1.1rem 1.2rem;
+  border-bottom: 1px solid #f0ecee;
+  vertical-align: top;
+  font-size: 0.98rem;
+  color: var(--parchment);
+}
+.academic-table tbody tr:last-child td { border-bottom: none; }
+.academic-table tbody tr { transition: background 200ms ease; }
+.academic-table tbody tr:hover { background: rgba(47,13,19,0.03); }
+
+.academic-table__title {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  color: #2f0d13;
+  line-height: 1.35;
+}
+.academic-table__author { color: var(--fog); }
+.academic-table__info {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--ash);
+}
+.academic-table__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--sepia);
+  border: 1px solid #e0d3d6;
+  padding: 7px 13px;
+  white-space: nowrap;
+  transition: all 200ms ease;
+}
+.academic-table__link:hover {
+  background: #2f0d13;
+  color: #fff;
+  border-color: #2f0d13;
+}
+
+/* ── Lista de poesias / documentos PDF ── */
+.doc-list {
+  display: flex;
+  flex-direction: column;
+  margin-top: 2rem;
+  border-top: 1px solid #e6dcde;
+}
+.doc-item {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  padding: 1.3rem 0.5rem;
+  border-bottom: 1px solid #f0ecee;
+  text-decoration: none;
+  transition: background 200ms ease, padding-left 200ms ease;
+}
+.doc-item:hover {
+  background: rgba(47,13,19,0.03);
+  padding-left: 1rem;
+}
+.doc-item__icon {
+  flex-shrink: 0;
+  color: var(--sepia);
+  display: flex;
+}
+.doc-item__body { flex: 1; min-width: 0; }
+.doc-item__title {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  color: #2f0d13;
+  line-height: 1.3;
+}
+.doc-item__meta {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--ash);
+  margin-top: 0.25rem;
+}
+.doc-item__action {
+  flex-shrink: 0;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--sepia);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* Estado vazio elegante */
+.content-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  padding: 5rem 2rem;
+  text-align: center;
+  color: var(--ash);
+}
+.content-empty p {
+  font-family: var(--font-body);
+  font-size: 1.05rem;
+  max-width: 420px;
+}
+
+@media (max-width: 768px) {
+  .content { padding: 0 1.5rem 4rem; }
+  .team-grid { gap: 2rem 1rem; }
+  .team-member__photo { width: 110px; height: 110px; }
+}

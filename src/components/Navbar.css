@@ -25,6 +25,7 @@
 .navbar__brand {
   display: flex;
   align-items: center;
+  gap: 14px;
   flex-shrink: 0;
   margin-right: auto;
 }
@@ -34,6 +35,26 @@
   width: auto;
   display: block;
   transform: scaleX(-1);
+}
+
+/* Indicação da página atual (ao lado do ícone) */
+.navbar__current {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  animation: fadeIn 0.4s ease both;
+}
+.navbar__current-sep {
+  width: 1px;
+  height: 26px;
+  background: #e0d3d6;
+}
+.navbar__current-text {
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #2f0d13;
+  white-space: nowrap;
 }
 
 /* Desktop links */
@@ -111,6 +132,11 @@
   background: rgba(47,13,19,0.04);
   padding-left: 24px;
 }
+.navbar__dropdown-item--active {
+  color: #2f0d13;
+  border-left: 2px solid #2f0d13;
+  padding-left: 16px;
+}
 
 /* Mobile toggle */
 .navbar__mobile-toggle {
@@ -151,6 +177,16 @@
   transition: color var(--transition);
 }
 .navbar__mobile-link:hover { color: #2f0d13; }
+.navbar__mobile-link--active {
+  color: #2f0d13;
+  border-left: 2px solid #2f0d13;
+  padding-left: 8px;
+}
+
+@media (max-width: 600px) {
+  .navbar__current-text { display: none; }
+  .navbar__current-sep { display: none; }
+}
 
 @media (max-width: 900px) {
   .navbar__links { display: none; }

@@ -1,100 +1,68 @@
+import PageHeader from '../components/PageHeader';
+import useAcervoImages from '../hooks/useAcervoImages';
+import './content.css';
 
-const GRUPO_A = [
-  { nome: 'Nome Sobrenome', cor: '#000' },
-  { nome: 'Nome Sobrenome', cor: '#000' },
-  { nome: 'Nome Sobrenome', cor: '#000' },
+// Substitua nomes/funções e adicione `foto` (URL) quando houver.
+const COORDENACAO = [
+  { nome: 'Nome Sobrenome', funcao: 'Coordenação' },
+  { nome: 'Nome Sobrenome', funcao: 'Pesquisa' },
 ];
 
-const GRUPO_B = [
-  { nome: 'Nome Sobrenome', cor: '#000' },
-  { nome: 'Nome Sobrenome', cor: '#000' },
-  { nome: 'Nome Sobrenome', cor: '#000' },
+const COLABORADORES = [
+  { nome: 'Nome Sobrenome', funcao: 'Documentação' },
+  { nome: 'Nome Sobrenome', funcao: 'Catalogação' },
+  { nome: 'Nome Sobrenome', funcao: 'Digitalização' },
+  { nome: 'Nome Sobrenome', funcao: 'Curadoria' },
 ];
 
-const TEXTO_A = 'Texto descritivo sobre o grupo, suas pesquisas, contribuições ao acervo e trajetória acadêmica. Substitua este parágrafo com o conteúdo real da equipe.';
-const TEXTO_B = 'Texto descritivo sobre o segundo grupo de colaboradores, suas áreas de atuação e envolvimento com o projeto. Substitua com o conteúdo definitivo.';
+function initials(nome) {
+  return nome.split(' ').filter(Boolean).slice(0, 2).map((p) => p[0]).join('').toUpperCase();
+}
 
-function Circles({ pessoas }) {
+function Member({ p }) {
   return (
-    <div style={{ display: 'flex', flexWrap: 'wrap', gap: '2rem' }}>
-      {pessoas.map((p, i) => (
-        <div key={i} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.6rem' }}>
-          <div style={{
-            width: 90,
-            height: 90,
-            borderRadius: '50%',
-            background: p.cor,
-            flexShrink: 0,
-          }} />
-          <span style={{
-            fontFamily: 'var(--font-mono)',
-            fontSize: '0.65rem',
-            letterSpacing: '0.06em',
-            color: 'var(--fog)',
-            textTransform: 'uppercase',
-            textAlign: 'center',
-            maxWidth: 90,
-            lineHeight: 1.4,
-          }}>
-            {p.nome}
-          </span>
-        </div>
-      ))}
+    <div className="team-member">
+      <div className="team-member__photo">
+        {p.foto
+          ? <img src={p.foto} alt={p.nome} />
+          : <span className="team-member__initials">{initials(p.nome)}</span>}
+      </div>
+      <span className="team-member__name">{p.nome}</span>
+      <span className="team-member__role">{p.funcao}</span>
     </div>
   );
 }
 
-function TextBlock({ children }) {
-  return (
-    <p style={{
-      fontFamily: 'var(--font-body)',
-      fontSize: '1.05rem',
-      color: 'var(--fog)',
-      lineHeight: 1.85,
-      maxWidth: 380,
-    }}>
-      {children}
-    </p>
-  );
-}
-
 export default function EquipePage() {
+  const { bannerAt } = useAcervoImages();
+
   return (
-    <div style={{ minHeight: '80vh', padding: '5rem 2rem' }}>
-      <div style={{ maxWidth: '1000px', margin: '0 auto' }}>
+    <div className="animate-fade">
+      <PageHeader
+        eyebrow="Acervo"
+        title="Equipe"
+        description="As pessoas por trás da pesquisa, documentação e preservação do Acervo Maria da Conceição."
+        image={bannerAt(7)}
+      />
 
-        <h1 style={{
-          fontFamily: 'var(--font-display)',
-          fontStyle: 'italic',
-          fontSize: 'clamp(2rem,4vw,3rem)',
-          color: '#2f0d13',
-          marginBottom: '4rem',
-        }}>
-          Equipe
-        </h1>
+      <div className="content">
+        <section className="content-section" style={{ marginTop: '2.5rem' }}>
+          <span className="content-section__label">Coordenação</span>
+          <h2 className="content-section__title">Quem conduz o projeto</h2>
+          <div className="team-grid">
+            {COORDENACAO.map((p, i) => <Member key={i} p={p} />)}
+          </div>
+        </section>
 
-        {/* Linha 1: círculos à esquerda, texto à direita */}
-        <div style={{
-          display: 'flex',
-          alignItems: 'flex-start',
-          gap: '4rem',
-          flexWrap: 'wrap',
-          marginBottom: '5rem',
-        }}>
-          <Circles pessoas={GRUPO_A} />
-          <TextBlock>{TEXTO_A}</TextBlock>
-        </div>
+        <div className="content-rule" />
 
-        <div style={{
-          display: 'flex',
-          alignItems: 'flex-start',
-          gap: '4rem',
-          flexWrap: 'wrap',
-        }}>
-          <TextBlock>{TEXTO_B}</TextBlock>
-          <Circles pessoas={GRUPO_B} />
-        </div>
-
+        <section>
+          <span className="content-section__label">Colaboradores</span>
+          <h2 className="content-section__title">Equipe de pesquisa e documentação</h2>
+          <div className="team-grid">
+            {COLABORADORES.map((p, i) => <Member key={i} p={p} />)}
+          </div>
+        </section>
       </div>
     </div>
   );

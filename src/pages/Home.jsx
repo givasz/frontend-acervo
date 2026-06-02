@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { getCollections } from '../api';
-import { Archive, Image, ChevronRight, Layers } from 'lucide-react';
+import { Archive, ChevronRight, Layers } from 'lucide-react';
+import Carousel from '../components/Carousel';
 import './Home.css';
 
 const API = import.meta.env.VITE_API_URL || '';
@@ -13,6 +14,22 @@ export default function Home() {
   useEffect(() => {
     getCollections().then(r => setCollections(r.data)).finally(() => setLoading(false));
   }, []);
+
+  const slides = collections
+    .filter(c => c.cover_image)
+    .slice(0, 8)
+    .map(c => ({
+      id: c.id,
+      image: `${API}${c.cover_image}`,
+      title: c.name,
+      subtitle: 'Acervo · Coleção',
+      to: `/acervo/${c.slug}`,
+    }));
+
+  const scrollToCollections = (e) => {
+    e.preventDefault();
+    document.getElementById('colecoes')?.scrollIntoView({ behavior: 'smooth' });
+  };
 
   return (
     <div className="home">
@@ -30,15 +47,15 @@ export default function Home() {
           </h1>
           <div className="divider" style={{maxWidth: '200px', margin: '2rem 0'}} />
           <p className="hero__desc">
-            Uma coleção dedicada à preservação e difusão da memória histórica, 
-            reúne documentos, fotografias e registros que contam a história 
+            Uma coleção dedicada à preservação e difusão da memória histórica,
+            reúne documentos, fotografias e registros que contam a história
             através do tempo.
           </p>
           <div className="hero__actions">
-            <Link to="/busca" className="btn btn-primary">
+            <a href="#colecoes" onClick={scrollToCollections} className="btn btn-primary">
               <Archive size={16} /> Explorar Acervo
-            </Link>
-            <Link to="/sobre" className="btn btn-ghost">Sobre a Coleção</Link>
+            </a>
+            <Link to="/sobre" className="btn btn-ghost">Sobre o Acervo</Link>
           </div>
         </div>
         <div className="hero__ornament">
@@ -46,8 +63,24 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Carrossel de destaques (imagens reais do acervo) */}
+      {slides.length > 0 && (
+        <section className="home-carousel">
+          <div className="section-header" style={{maxWidth:'1400px', margin:'0 auto 1.5rem', padding:'0 2rem'}}>
+            <div className="section-header__line" />
+            <div className="section-header__content">
+              <span className="mono" style={{fontSize:'0.7rem', letterSpacing:'0.2em', color:'var(--sepia)', textTransform:'uppercase'}}>
+                Em destaque
+              </span>
+              <h2 className="section-header__title">Imagens do Acervo</h2>
+            </div>
+          </div>
+          <Carousel slides={slides} aspect="60vh" />
+        </section>
+      )}
+
       {/* Collections */}
-      <section className="collections-section">
+      <section id="colecoes" className="collections-section">
         <div className="section-header">
           <div className="section-header__line" />
           <div className="section-header__content">

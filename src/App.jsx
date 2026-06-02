@@ -11,10 +11,14 @@ import CollectionPage from './pages/CollectionPage';
 import AlbumPage from './pages/AlbumPage';
 import ImagePage from './pages/ImagePage';
 import SearchPage from './pages/SearchPage';
+import SobrePage from './pages/SobrePage';
+import FotografiaPage from './pages/FotografiaPage';
+import MemoriaOralPage from './pages/MemoriaOralPage';
 import CatalogacaoPage from './pages/CatalogacaoPage';
 import EntrevistasPage from './pages/EntrevistasPage';
 import EntrevistaDetailPage from './pages/EntrevistaDetailPage';
 import ProducoesAcademicasPage from './pages/ProducoesAcademicasPage';
+import PoesiaPage from './pages/PoesiaPage';
 import EquipePage from './pages/EquipePage';
 import ContatoPage from './pages/ContatoPage';
 
@@ -28,14 +32,6 @@ import AdminAlbumDetail from './pages/admin/AdminAlbumDetail';
 import AdminImages from './pages/admin/AdminImages';
 import AdminSettings from './pages/admin/AdminSettings';
 import AdminEntrevistas from './pages/admin/AdminEntrevistas';
-
-function SobrePage() {
-  return <div style={{ minHeight: '80vh' }} />;
-}
-
-function PlaceholderPage() {
-  return <div style={{ minHeight: '80vh' }} />;
-}
 
 function PublicWrapper() {
   useEffect(() => {
@@ -62,16 +58,18 @@ function PublicWrapper() {
         <div style={{ flex: 1 }}>
           <Routes>
             <Route path="/" element={<Home />} />
+            <Route path="/sobre" element={<SobrePage />} />
+            <Route path="/acervo/fotografias" element={<FotografiaPage />} />
+            <Route path="/acervo/memoria-oral" element={<MemoriaOralPage />} />
             <Route path="/acervo/:slug" element={<CollectionPage />} />
             <Route path="/album/:id" element={<AlbumPage />} />
             <Route path="/imagem/:id" element={<ImagePage />} />
             <Route path="/busca" element={<SearchPage />} />
-            <Route path="/sobre" element={<SobrePage />} />
             <Route path="/catalogacao" element={<CatalogacaoPage />} />
             <Route path="/material-complementar/trabalhos-academicos" element={<ProducoesAcademicasPage />} />
-            <Route path="/material-complementar/videos" element={<EntrevistasPage />} />
+            <Route path="/material-complementar/videos" element={<MemoriaOralPage variant="videos" />} />
             <Route path="/material-complementar/videos/:id" element={<EntrevistaDetailPage />} />
-            <Route path="/material-complementar/poesia" element={<PlaceholderPage />} />
+            <Route path="/material-complementar/poesia" element={<PoesiaPage />} />
             {/* rotas legadas mantidas para não quebrar links existentes */}
             <Route path="/material-complementar/entrevistas" element={<EntrevistasPage />} />
             <Route path="/material-complementar/entrevistas/:id" element={<EntrevistaDetailPage />} />

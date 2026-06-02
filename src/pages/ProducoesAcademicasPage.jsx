@@ -1,74 +1,84 @@
 import { useState, useEffect } from 'react';
-import { ExternalLink } from 'lucide-react';
+import { ExternalLink, GraduationCap } from 'lucide-react';
+import PageHeader from '../components/PageHeader';
+import useAcervoImages from '../hooks/useAcervoImages';
 import { getSettings } from '../api';
+import './content.css';
 
 export default function ProducoesAcademicasPage() {
   const [producoes, setProducoes] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const { bannerAt } = useAcervoImages();
 
   useEffect(() => {
-    getSettings('producoes_academicas').then(r => {
-      try { setProducoes(JSON.parse(r.data.value) || []); } catch { setProducoes([]); }
-    }).catch(() => setProducoes([]));
+    getSettings('producoes_academicas')
+      .then((r) => {
+        try { setProducoes(JSON.parse(r.data.value) || []); } catch { setProducoes([]); }
+      })
+      .catch(() => setProducoes([]))
+      .finally(() => setLoading(false));
   }, []);
 
-  if (producoes.length === 0) return <div style={{ minHeight: '80vh' }} />;
-
   return (
-    <div style={{ minHeight: '80vh', padding: '5rem 2rem' }}>
-      <div style={{ maxWidth: '900px', margin: '0 auto' }}>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
-          {producoes.map((p, i) => (
-            <div key={i} style={{
-              border: '1px solid #e0dbd8',
-              padding: '1.75rem',
-              background: 'var(--surface)',
-            }}>
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: '1rem' }}>
-                <div style={{ flex: 1 }}>
-                  {p.tipo && (
-                    <span style={{
-                      fontFamily: 'var(--font-mono)', fontSize: '0.65rem', letterSpacing: '0.15em',
-                      textTransform: 'uppercase', color: 'var(--sepia)', display: 'block', marginBottom: '0.5rem'
-                    }}>
-                      {p.tipo}
-                    </span>
-                  )}
-                  <h2 style={{ fontFamily: 'var(--font-display)', fontSize: '1.2rem', lineHeight: 1.4, marginBottom: '0.5rem' }}>
-                    {p.titulo}
-                  </h2>
-                  {p.autores && (
-                    <p style={{ fontFamily: 'var(--font-mono)', fontSize: '0.75rem', color: 'var(--fog)', marginBottom: p.resumo ? '1rem' : 0 }}>
-                      {p.autores}{p.ano ? ` — ${p.ano}` : ''}
-                    </p>
-                  )}
-                  {p.resumo && (
-                    <p style={{ fontFamily: 'var(--font-body)', fontSize: '0.95rem', color: 'var(--fog)', lineHeight: 1.7 }}>
-                      {p.resumo}
-                    </p>
-                  )}
-                </div>
-                {p.link && (
-                  <a
-                    href={p.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    style={{
-                      display: 'flex', alignItems: 'center', gap: '6px', flexShrink: 0,
-                      fontFamily: 'var(--font-mono)', fontSize: '0.7rem', letterSpacing: '0.1em',
-                      color: 'var(--sepia)', textTransform: 'uppercase', textDecoration: 'none',
-                      border: '1px solid #d4cec4', padding: '8px 14px', transition: 'all 200ms',
-                    }}
-                    onMouseEnter={e => e.currentTarget.style.background = 'rgba(47,13,19,0.05)'}
-                    onMouseLeave={e => e.currentTarget.style.background = 'transparent'}
-                  >
-                    <ExternalLink size={13} />
-                    Acessar
-                  </a>
-                )}
-              </div>
-            </div>
-          ))}
-        </div>
+    <div className="animate-fade">
+      <PageHeader
+        eyebrow="Material Complementar"
+        title="Trabalhos Acadêmicos"
+        description="Monografias, dissertações, artigos e demais produções acadêmicas relacionadas ao acervo, com acesso ao documento original."
+        image={bannerAt(6)}
+      />
+
+      <div className="content">
+        {loading ? (
+          <div className="academic-table-wrap">
+            <div className="skeleton" style={{ height: 220 }} />
+          </div>
+        ) : producoes.length === 0 ? (
+          <div className="content-empty">
+            <GraduationCap size={44} opacity={0.25} />
+            <p>Os trabalhos acadêmicos aparecerão aqui assim que forem cadastrados.</p>
+          </div>
+        ) : (
+          <div className="academic-table-wrap">
+            <table className="academic-table">
+              <thead>
+                <tr>
+                  <th>Título</th>
+                  <th>Autoria</th>
+                  <th>Informações</th>
+                  <th>Acesso</th>
+                </tr>
+              </thead>
+              <tbody>
+                {producoes.map((p, i) => (
+                  <tr key={i}>
+                    <td>
+                      <span className="academic-table__title">{p.titulo}</span>
+                    </td>
+                    <td className="academic-table__author">{p.autores || '—'}</td>
+                    <td className="academic-table__info">
+                      {[p.tipo, p.ano].filter(Boolean).join(' · ') || '—'}
+                      {p.resumo && (
+                        <span style={{ display: 'block', marginTop: 6, color: 'var(--fog)', fontFamily: 'var(--font-body)', fontSize: '0.9rem', lineHeight: 1.5 }}>
+                          {p.resumo}
+                        </span>
+                      )}
+                    </td>
+                    <td>
+                      {p.link ? (
+                        <a href={p.link} target="_blank" rel="noopener noreferrer" className="academic-table__link">
+                          <ExternalLink size={13} /> Acessar
+                        </a>
+                      ) : (
+                        <span className="academic-table__info">—</span>
+                      )}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        )}
       </div>
     </div>
   );

@@ -1,0 +1,100 @@
+.memoria-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.memoria-card {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #e0dbd8;
+  background: var(--surface);
+  overflow: hidden;
+  text-decoration: none;
+  transition: transform 300ms ease, border-color 300ms ease, box-shadow 300ms ease;
+}
+.memoria-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--sepia);
+  box-shadow: 0 12px 40px rgba(47, 13, 19, 0.1);
+}
+
+.memoria-card__thumb {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  background: #111;
+  overflow: hidden;
+}
+.memoria-card__thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.9;
+  transition: opacity 300ms ease, transform 600ms ease;
+}
+.memoria-card:hover .memoria-card__thumb img {
+  opacity: 1;
+  transform: scale(1.05);
+}
+.memoria-card__thumb-shade {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.5) 0%, transparent 55%);
+}
+.memoria-card__play {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  background: rgba(20, 4, 8, 0.6);
+  border: 1.5px solid rgba(255, 255, 255, 0.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-left: 3px;
+  transition: transform 300ms ease, background 300ms ease;
+}
+.memoria-card:hover .memoria-card__play {
+  transform: translate(-50%, -50%) scale(1.12);
+  background: rgba(47, 13, 19, 0.85);
+}
+
+.memoria-card__body {
+  padding: 1.25rem 1.4rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  flex: 1;
+}
+.memoria-card__title {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.25rem;
+  line-height: 1.3;
+  color: #2f0d13;
+}
+.memoria-card__desc {
+  font-family: var(--font-body);
+  font-size: 0.96rem;
+  line-height: 1.65;
+  color: var(--fog);
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.memoria-card__cta {
+  margin-top: auto;
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--sepia);
+}
+
+@media (max-width: 768px) {
+  .memoria-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+}
