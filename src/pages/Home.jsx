@@ -33,8 +33,17 @@ export default function Home() {
 
   return (
     <div className="home">
-      {/* Hero */}
-      <section className="hero">
+      {/* Banner principal — foto histórica do acervo */}
+      <section className="home-banner">
+        <img
+          src="/foto.capa.jpg"
+          alt="Acervo Maria da Conceição — registro histórico"
+          fetchPriority="high"
+        />
+      </section>
+
+      {/* Hero / intro */}
+      <section className="hero hero--compact">
         <div className="hero__bg">
           <div className="hero__lines" />
         </div>
