@@ -67,6 +67,20 @@ export const searchImages = (q) => api.get('/images/search/q', { params: { q } }
 export const getSettings = (key) => api.get(`/settings/${key}`);
 export const updateSettings = (key, value) => api.put(`/settings/${key}`, { value });
 
+/**
+ * Normaliza o `value` de uma resposta de /settings.
+ * A API pode devolver o valor já parseado (objeto/array) OU como string JSON,
+ * dependendo do deploy — este helper lida com os dois casos sem quebrar.
+ */
+export function readSetting(res, fallback = null) {
+  const v = res?.data?.value;
+  if (v == null) return fallback;
+  if (typeof v === 'string') {
+    try { return JSON.parse(v); } catch { return fallback; }
+  }
+  return v;
+}
+
 // Cover upload
 export const uploadCover = (file, type, id) => {
   const form = new FormData();

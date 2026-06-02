@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { Play, Mic } from 'lucide-react';
 import PageHeader from '../components/PageHeader';
 import useAcervoImages from '../hooks/useAcervoImages';
-import { getSettings } from '../api';
+import { getSettings, readSetting } from '../api';
 import './content.css';
 import './MemoriaOralPage.css';
 
@@ -30,9 +30,7 @@ export default function MemoriaOralPage({ variant = 'memoria' }) {
 
   useEffect(() => {
     getSettings('entrevistas')
-      .then((r) => {
-        try { setVideos(JSON.parse(r.data.value) || []); } catch { setVideos([]); }
-      })
+      .then((r) => setVideos(readSetting(r, []) || []))
       .catch(() => setVideos([]))
       .finally(() => setLoading(false));
   }, []);

@@ -29,6 +29,7 @@ img {
   --dim: #f0f0f0;
   --panel: #ffffff;
   --surface: #f8f8f8;
+  --border: #e6dcde;
 
   --font-display: 'Playfair Display', Georgia, serif;
   --font-body: 'Cormorant Garamond', Georgia, serif;
@@ -36,6 +37,21 @@ img {
 
   --radius: 2px;
   --transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ── Tema escuro ── (mantém a identidade vinho do acervo, em tom mais claro) */
+:root[data-theme="dark"] {
+  --ink: #14100e;        /* fundo da página */
+  --parchment: #ece3df;  /* texto corrido */
+  --sepia: #d99a8a;      /* acento/títulos — vinho-rosado claro, legível no escuro */
+  --sepia-dark: #b87a6a;
+  --sepia-light: #c98a9a;
+  --fog: #b3a8a3;        /* texto secundário */
+  --ash: #877d78;        /* texto fraco */
+  --dim: #211b18;        /* fundo sutil */
+  --panel: #1a1512;      /* navbar, footer, dropdown */
+  --surface: #1e1815;    /* cards */
+  --border: #38302c;     /* bordas */
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -50,6 +66,7 @@ body {
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
+  transition: background-color 300ms ease, color 300ms ease;
 }
 
 a { color: inherit; text-decoration: none; }
@@ -60,10 +77,10 @@ input, textarea, select { font: inherit; }
 /* Scrollbar */
 ::-webkit-scrollbar { width: 6px; height: 6px; }
 ::-webkit-scrollbar-track { background: var(--dim); }
-::-webkit-scrollbar-thumb { background: #c0b0b5; border-radius: 3px; }
+::-webkit-scrollbar-thumb { background: var(--sepia-light); border-radius: 3px; }
 
 /* Typography */
-h1, h2, h3, h4 { font-family: var(--font-display); font-weight: 400; line-height: 1.2; color: #2f0d13; }
+h1, h2, h3, h4 { font-family: var(--font-display); font-weight: 400; line-height: 1.2; color: var(--sepia); }
 
 /* Utils */
 .mono { font-family: var(--font-mono); }
@@ -89,7 +106,8 @@ h1, h2, h3, h4 { font-family: var(--font-display); font-weight: 400; line-height
 /* Divider */
 .divider {
   height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(47,13,19,0.3), transparent);
+  background: linear-gradient(90deg, transparent, var(--sepia-light), transparent);
+  opacity: 0.5;
   margin: 2rem 0;
 }
 
@@ -112,7 +130,7 @@ h1, h2, h3, h4 { font-family: var(--font-display); font-weight: 400; line-height
 .form-label { font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ash); }
 .form-input {
   background: var(--dim);
-  border: 1px solid #d4cec4;
+  border: 1px solid var(--border);
   color: var(--parchment);
   padding: 10px 14px;
   border-radius: var(--radius);
@@ -159,7 +177,7 @@ textarea.form-input { resize: vertical; min-height: 100px; }
 /* Cards */
 .card {
   background: var(--surface);
-  border: 1px solid #e0dbd8;
+  border: 1px solid var(--border);
   border-radius: var(--radius);
   overflow: hidden;
   transition: var(--transition);

@@ -32,7 +32,7 @@
 .search-form__input {
   width: 100%;
   background: var(--surface);
-  border: 1px solid #d4cec4;
+  border: 1px solid var(--border);
   color: var(--parchment);
   padding: 13px 16px 13px 46px;
   font-family: var(--font-body);
@@ -57,7 +57,7 @@
 }
 .search-result-card {
   background: var(--surface);
-  border: 1px solid #e0dbd8;
+  border: 1px solid var(--border);
   overflow: hidden;
   transition: all 280ms ease;
   text-decoration: none;
@@ -77,7 +77,7 @@
 }
 .search-result-card:hover .search-result-card__overlay { opacity: 1; }
 .search-result-card__body { padding: 14px 16px 18px; display: flex; flex-direction: column; gap: 5px; }
-.search-result-card__title { font-style: italic; font-size: 1rem; color: #2f0d13; }
+.search-result-card__title { font-style: italic; font-size: 1rem; color: var(--sepia); }
 .search-result-card__col { font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--sepia); }
 .search-result-card__type { font-size: 0.85rem; color: var(--ash); }
 .search-result-card__tags { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 6px; }

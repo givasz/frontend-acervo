@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, ChevronDown } from 'lucide-react';
+import { Menu, X, ChevronDown, Sun, Moon } from 'lucide-react';
+import useTheme from '../hooks/useTheme';
 import './Navbar.css';
 
 const NAV = [
@@ -56,6 +57,7 @@ export default function Navbar() {
   const [activeDropdown, setActiveDropdown] = useState(null);
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
+  const { isDark, toggle } = useTheme();
 
   const currentTitle = pageTitle(location.pathname);
 
@@ -134,6 +136,15 @@ export default function Navbar() {
             )
           )}
         </div>
+
+        <button
+          className="navbar__theme"
+          onClick={toggle}
+          aria-label={isDark ? 'Ativar modo claro' : 'Ativar modo escuro'}
+          title={isDark ? 'Modo claro' : 'Modo escuro'}
+        >
+          {isDark ? <Sun size={18} /> : <Moon size={18} />}
+        </button>
 
         <button className="navbar__mobile-toggle" onClick={() => setOpen((s) => !s)}>
           {open ? <X size={22} /> : <Menu size={22} />}

@@ -19,7 +19,7 @@
   gap: 8px;
   font-family: var(--font-mono);
   font-size: 0.85rem;
-  color: #2f0d13;
+  color: var(--sepia);
   transition: color 200ms ease;
   word-break: break-all;
 }
@@ -41,10 +41,10 @@
   transition: color 200ms ease, transform 200ms ease;
 }
 .contato-info__social-item:hover {
-  color: #2f0d13;
+  color: var(--sepia);
   transform: translateX(3px);
 }
-.contato-info__social-item svg { color: #2f0d13; flex-shrink: 0; }
+.contato-info__social-item svg { color: var(--sepia); flex-shrink: 0; }
 
 .contato-form {
   display: flex;

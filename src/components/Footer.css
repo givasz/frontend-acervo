@@ -1,7 +1,7 @@
 .site-footer {
   margin-top: auto;            /* mantém o rodapé colado embaixo, sem ficar "solto" */
-  background: #faf6f4;
-  border-top: 1px solid #ece2e4;
+  background: var(--surface);
+  border-top: 1px solid var(--border);
 }
 
 .site-footer__inner {
@@ -18,7 +18,7 @@
   font-family: var(--font-display);
   font-style: italic;
   font-size: 1.35rem;
-  color: #2f0d13;
+  color: var(--sepia);
 }
 .site-footer__tagline {
   margin-top: 0.6rem;
@@ -44,7 +44,7 @@
   transition: color 200ms ease, padding-left 200ms ease;
 }
 .site-footer__link:hover {
-  color: #2f0d13;
+  color: var(--sepia);
   padding-left: 4px;
 }
 
@@ -61,7 +61,7 @@
   max-width: 1400px;
   margin: 0 auto;
   padding: 1.25rem 2rem;
-  border-top: 1px solid #ece2e4;
+  border-top: 1px solid var(--border);
   display: flex;
   justify-content: space-between;
   align-items: center;

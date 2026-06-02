@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { FileText, Download, BookOpen } from 'lucide-react';
 import PageHeader from '../components/PageHeader';
 import useAcervoImages from '../hooks/useAcervoImages';
-import { getSettings } from '../api';
+import { getSettings, readSetting } from '../api';
 import './content.css';
 
 export default function PoesiaPage() {
@@ -12,9 +12,7 @@ export default function PoesiaPage() {
 
   useEffect(() => {
     getSettings('poesias')
-      .then((r) => {
-        try { setPoesias(JSON.parse(r.data.value) || []); } catch { setPoesias([]); }
-      })
+      .then((r) => setPoesias(readSetting(r, []) || []))
       .catch(() => setPoesias([]))
       .finally(() => setLoading(false));
   }, []);

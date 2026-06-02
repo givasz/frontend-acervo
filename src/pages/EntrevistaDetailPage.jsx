@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { ChevronLeft, Youtube } from 'lucide-react';
-import { getSettings } from '../api';
+import { getSettings, readSetting } from '../api';
 
 export default function EntrevistaDetailPage() {
   const { id } = useParams();
@@ -10,10 +10,8 @@ export default function EntrevistaDetailPage() {
 
   useEffect(() => {
     getSettings('entrevistas').then(r => {
-      try {
-        const videos = JSON.parse(r.data.value) || [];
-        setVideo(videos.find(v => v.id === id) || null);
-      } catch { setVideo(null); }
+      const videos = readSetting(r, []) || [];
+      setVideo(videos.find(v => v.id === id) || null);
     }).catch(() => setVideo(null))
     .finally(() => setLoading(false));
   }, [id]);

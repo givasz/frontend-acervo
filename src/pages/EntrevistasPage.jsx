@@ -1,15 +1,15 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Play } from 'lucide-react';
-import { getSettings } from '../api';
+import { getSettings, readSetting } from '../api';
 
 export default function EntrevistasPage() {
   const [videos, setVideos] = useState([]);
 
   useEffect(() => {
-    getSettings('entrevistas').then(r => {
-      try { setVideos(JSON.parse(r.data.value) || []); } catch { setVideos([]); }
-    }).catch(() => setVideos([]));
+    getSettings('entrevistas')
+      .then(r => setVideos(readSetting(r, []) || []))
+      .catch(() => setVideos([]));
   }, []);
 
   if (videos.length === 0) return <div style={{ minHeight: '80vh' }} />;
@@ -34,14 +34,14 @@ export default function EntrevistasPage() {
                 e.currentTarget.querySelector('.thumb').style.opacity = '1';
               }}
               onMouseLeave={e => {
-                e.currentTarget.querySelector('.card').style.borderColor = '#e0dbd8';
+                e.currentTarget.querySelector('.card').style.borderColor = 'var(--border)';
                 e.currentTarget.querySelector('.card').style.transform = 'translateY(0)';
                 e.currentTarget.querySelector('.play-btn').style.transform = 'translate(-50%,-50%) scale(1)';
                 e.currentTarget.querySelector('.thumb').style.opacity = '0.85';
               }}
             >
               <div className="card" style={{
-                border: '1px solid #e0dbd8',
+                border: '1px solid var(--border)',
                 background: 'var(--surface)',
                 overflow: 'hidden',
                 transition: 'border-color 250ms, transform 250ms, box-shadow 250ms',
@@ -72,7 +72,7 @@ export default function EntrevistasPage() {
                     fontFamily: 'var(--font-display)',
                     fontStyle: 'italic',
                     fontSize: '1.15rem',
-                    color: '#2f0d13',
+                    color: 'var(--sepia)',
                     lineHeight: 1.35,
                     margin: 0,
                   }}>

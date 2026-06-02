@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { ExternalLink, GraduationCap } from 'lucide-react';
 import PageHeader from '../components/PageHeader';
 import useAcervoImages from '../hooks/useAcervoImages';
-import { getSettings } from '../api';
+import { getSettings, readSetting } from '../api';
 import './content.css';
 
 export default function ProducoesAcademicasPage() {
@@ -12,9 +12,7 @@ export default function ProducoesAcademicasPage() {
 
   useEffect(() => {
     getSettings('producoes_academicas')
-      .then((r) => {
-        try { setProducoes(JSON.parse(r.data.value) || []); } catch { setProducoes([]); }
-      })
+      .then((r) => setProducoes(readSetting(r, []) || []))
       .catch(() => setProducoes([]))
       .finally(() => setLoading(false));
   }, []);
