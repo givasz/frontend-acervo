@@ -32,6 +32,8 @@ import AdminAlbumDetail from './pages/admin/AdminAlbumDetail';
 import AdminImages from './pages/admin/AdminImages';
 import AdminSettings from './pages/admin/AdminSettings';
 import AdminEntrevistas from './pages/admin/AdminEntrevistas';
+import AdminProducoes from './pages/admin/AdminProducoes';
+import AdminPoesias from './pages/admin/AdminPoesias';
 
 function PublicWrapper() {
   useEffect(() => {
@@ -119,6 +121,8 @@ export default function App() {
                     <Route path="albuns/:id" element={<AdminAlbumDetail />} />
                     <Route path="imagens" element={<AdminImages />} />
                     <Route path="entrevistas" element={<AdminEntrevistas />} />
+                    <Route path="trabalhos" element={<AdminProducoes />} />
+                    <Route path="poesias" element={<AdminPoesias />} />
                     <Route path="configuracoes" element={<AdminSettings />} />
                   </Route>
                 </Routes>
