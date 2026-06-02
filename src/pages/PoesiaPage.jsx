@@ -5,6 +5,10 @@ import useAcervoImages from '../hooks/useAcervoImages';
 import { getSettings, readSetting } from '../api';
 import './content.css';
 
+const API = import.meta.env.VITE_API_URL || '';
+// PDFs enviados pelo admin ficam como /uploads/... (servidos pelo backend)
+const fileUrl = (link) => (link && link.startsWith('/uploads') ? `${API}${link}` : link);
+
 export default function PoesiaPage() {
   const [poesias, setPoesias] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -49,7 +53,7 @@ export default function PoesiaPage() {
             {poesias.map((p, i) => (
               <a
                 key={i}
-                href={p.link}
+                href={fileUrl(p.link)}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="doc-item"

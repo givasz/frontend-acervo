@@ -81,6 +81,16 @@ export function readSetting(res, fallback = null) {
   return v;
 }
 
+// Upload genérico de arquivo (PDF/imagem) — devolve { url, filename }
+export const uploadFile = (file, onProgress) => {
+  const form = new FormData();
+  form.append('file', file);
+  return api.post('/upload/file', form, {
+    headers: { 'Content-Type': 'multipart/form-data' },
+    onUploadProgress: onProgress,
+  });
+};
+
 // Cover upload
 export const uploadCover = (file, type, id) => {
   const form = new FormData();

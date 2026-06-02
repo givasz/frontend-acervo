@@ -1,7 +1,11 @@
 import { useState, useEffect } from 'react';
-import { Plus, Trash2, Save, BookOpen, GripVertical, FileText } from 'lucide-react';
-import { getSettings, updateSettings, readSetting } from '../../api';
+import { Plus, Trash2, Save, BookOpen, GripVertical, FileText, Upload, Loader } from 'lucide-react';
+import { getSettings, updateSettings, readSetting, uploadFile } from '../../api';
 import toast from 'react-hot-toast';
+
+const API = import.meta.env.VITE_API_URL || '';
+// PDFs enviados ficam como /uploads/... (no backend); links externos ficam inteiros
+const fileUrl = (link) => (link && link.startsWith('/uploads') ? `${API}${link}` : link);
 
 const empty = () => ({ id: Date.now().toString(), titulo: '', autor: '', ano: '', link: '' });
 
@@ -9,6 +13,7 @@ export default function AdminPoesias() {
   const [itens, setItens] = useState([]);
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
+  const [uploadingIdx, setUploadingIdx] = useState(null);
 
   useEffect(() => {
     getSettings('poesias')
@@ -21,6 +26,19 @@ export default function AdminPoesias() {
   const remove = (i) => setItens(v => v.filter((_, idx) => idx !== i));
   const update = (i, field, value) =>
     setItens(v => v.map((item, idx) => (idx === i ? { ...item, [field]: value } : item)));
+
+  const handleUpload = async (i, file) => {
+    if (!file) return;
+    if (file.type !== 'application/pdf') return toast.error('Envie um arquivo PDF');
+    setUploadingIdx(i);
+    try {
+      const r = await uploadFile(file);
+      update(i, 'link', r.data.url);
+      toast.success('PDF enviado! Lembre de Salvar.');
+    } catch {
+      toast.error('Erro ao enviar o PDF');
+    } finally { setUploadingIdx(null); }
+  };
 
   const handleSave = async () => {
     if (itens.some(p => !p.titulo.trim())) return toast.error('Preencha o título de todas as poesias');
@@ -114,21 +132,38 @@ export default function AdminPoesias() {
                   </div>
 
                   <div className="form-group" style={{ margin: 0 }}>
-                    <label className="form-label">Link do PDF *</label>
-                    <input
-                      className="form-input"
-                      placeholder="https://.../poesia.pdf"
-                      value={p.link}
-                      onChange={e => update(i, 'link', e.target.value)}
-                      style={{ fontSize: '0.85rem' }}
-                    />
+                    <label className="form-label">PDF da poesia *</label>
+                    <div style={{ display: 'flex', gap: '8px', alignItems: 'stretch' }}>
+                      <input
+                        className="form-input"
+                        placeholder="Suba um PDF ao lado ou cole um link (https://...)"
+                        value={p.link}
+                        onChange={e => update(i, 'link', e.target.value)}
+                        style={{ fontSize: '0.85rem', flex: 1 }}
+                      />
+                      <label
+                        className="btn btn-ghost"
+                        style={{ flexShrink: 0, cursor: uploadingIdx === i ? 'wait' : 'pointer', whiteSpace: 'nowrap' }}
+                      >
+                        {uploadingIdx === i
+                          ? <><Loader size={14} className="spin" /> Enviando...</>
+                          : <><Upload size={14} /> Subir PDF</>}
+                        <input
+                          type="file"
+                          accept="application/pdf,.pdf"
+                          hidden
+                          disabled={uploadingIdx === i}
+                          onChange={e => { handleUpload(i, e.target.files?.[0]); e.target.value = ''; }}
+                        />
+                      </label>
+                    </div>
                     {p.link && (
                       <a
-                        href={p.link}
+                        href={fileUrl(p.link)}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="mono"
-                        style={{ display: 'inline-flex', alignItems: 'center', gap: 5, marginTop: 5, fontSize: '0.7rem', color: 'var(--sepia)' }}
+                        style={{ display: 'inline-flex', alignItems: 'center', gap: 5, marginTop: 6, fontSize: '0.7rem', color: 'var(--sepia)' }}
                       >
                         <FileText size={12} /> abrir PDF
                       </a>
