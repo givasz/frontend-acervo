@@ -35,7 +35,7 @@ img {
   --title: var(--sepia);
 
   --font-display: 'Forma DJR Banner', 'Playfair Display', Georgia, serif;
-  --font-body: 'Cormorant Garamond', Georgia, serif;
+  --font-body: 'Forma DJR Text', 'Cormorant Garamond', Georgia, serif;
   --font-mono: 'DM Mono', monospace;
 
   --radius: 2px;

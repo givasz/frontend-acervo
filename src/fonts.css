@@ -114,3 +114,95 @@
   src: url('/fonts/forma-djr-banner/FormaDJRBanner-BlackItalic-Testing.ttf') format('truetype');
   font-weight: 900; font-style: italic; font-display: swap;
 }
+
+/* ───────────────────────────────────────────────────────────
+   Forma DJR Text — fonte de TEXTO CORRIDO do acervo
+   Tamanho óptico desenhado para leitura em corpo pequeno.
+   Arquivos em /public/fonts/forma-djr-text/
+   Pesos: 300 ExtraLight · 350 Light · 400 Regular
+          500 Medium · 700 Bold · 800 ExtraBold · 900 Black
+   ─────────────────────────────────────────────────────────── */
+
+/* 300 — ExtraLight */
+@font-face {
+  font-family: 'Forma DJR Text';
+  src: url('/fonts/forma-djr-text/FormaDJRText-ExtraLight-Testing.ttf') format('truetype');
+  font-weight: 300; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'Forma DJR Text';
+  src: url('/fonts/forma-djr-text/FormaDJRText-ExtraLightItalic-Testing.ttf') format('truetype');
+  font-weight: 300; font-style: italic; font-display: swap;
+}
+
+/* 350 — Light */
+@font-face {
+  font-family: 'Forma DJR Text';
+  src: url('/fonts/forma-djr-text/FormaDJRText-Light-Testing.ttf') format('truetype');
+  font-weight: 350; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'Forma DJR Text';
+  src: url('/fonts/forma-djr-text/FormaDJRText-LightItalic-Testing.ttf') format('truetype');
+  font-weight: 350; font-style: italic; font-display: swap;
+}
+
+/* 400 — Regular */
+@font-face {
+  font-family: 'Forma DJR Text';
+  src: url('/fonts/forma-djr-text/FormaDJRText-Regular-Testing.ttf') format('truetype');
+  font-weight: 400; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'Forma DJR Text';
+  src: url('/fonts/forma-djr-text/FormaDJRText-Italic-Testing.ttf') format('truetype');
+  font-weight: 400; font-style: italic; font-display: swap;
+}
+
+/* 500 — Medium */
+@font-face {
+  font-family: 'Forma DJR Text';
+  src: url('/fonts/forma-djr-text/FormaDJRText-Medium-Testing.ttf') format('truetype');
+  font-weight: 500; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'Forma DJR Text';
+  src: url('/fonts/forma-djr-text/FormaDJRText-MediumItalic-Testing.ttf') format('truetype');
+  font-weight: 500; font-style: italic; font-display: swap;
+}
+
+/* 700 — Bold */
+@font-face {
+  font-family: 'Forma DJR Text';
+  src: url('/fonts/forma-djr-text/FormaDJRText-Bold-Testing.ttf') format('truetype');
+  font-weight: 700; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'Forma DJR Text';
+  src: url('/fonts/forma-djr-text/FormaDJRText-BoldItalic-Testing.ttf') format('truetype');
+  font-weight: 700; font-style: italic; font-display: swap;
+}
+
+/* 800 — ExtraBold */
+@font-face {
+  font-family: 'Forma DJR Text';
+  src: url('/fonts/forma-djr-text/FormaDJRText-ExtraBold-Testing.ttf') format('truetype');
+  font-weight: 800; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'Forma DJR Text';
+  src: url('/fonts/forma-djr-text/FormaDJRText-ExtraBoldItalic-Testing.ttf') format('truetype');
+  font-weight: 800; font-style: italic; font-display: swap;
+}
+
+/* 900 — Black */
+@font-face {
+  font-family: 'Forma DJR Text';
+  src: url('/fonts/forma-djr-text/FormaDJRText-Black-Testing.ttf') format('truetype');
+  font-weight: 900; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'Forma DJR Text';
+  src: url('/fonts/forma-djr-text/FormaDJRText-BlackItalic-Testing.ttf') format('truetype');
+  font-weight: 900; font-style: italic; font-display: swap;
+}
