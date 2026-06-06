@@ -47,7 +47,8 @@
   font-weight: 700;
   font-size: clamp(1rem, 1.4vw, 1.22rem);
   line-height: 1;
-  letter-spacing: 0.005em;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
   color: var(--title);
   white-space: nowrap;
   transition: color var(--transition);

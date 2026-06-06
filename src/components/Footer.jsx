@@ -31,7 +31,8 @@ export default function Footer() {
         </nav>
 
         <div className="site-footer__germinal">
-          <img src="/geminal-logo.png" alt="Logo Germinal" />
+          <img src="/geminal-logo.png" alt="Logo Cineclube Germinal" />
+          <img src="/Logo-LHist.png" alt="Logo LHist — Laboratório de História Social do Trabalho (UESB)" className="site-footer__lhist" />
         </div>
       </div>
 

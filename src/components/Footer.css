@@ -51,10 +51,16 @@
 .site-footer__germinal {
   display: flex;
   justify-content: flex-end;
+  align-items: center;
+  gap: 1.75rem;
+  flex-wrap: wrap;
 }
 .site-footer__germinal img {
   height: 52px;
   width: auto;
+}
+.site-footer__lhist {
+  height: 60px;
 }
 
 .site-footer__bottom {
