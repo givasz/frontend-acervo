@@ -36,6 +36,10 @@
   display: block;
   transform: scaleX(-1);
 }
+/* No modo escuro o traço vinho do logo some no fundo escuro — deixa branco */
+:root[data-theme="dark"] .navbar__logo {
+  filter: brightness(0) invert(1);
+}
 
 /* Nome do acervo ao lado do logo (wordmark — Forma DJR Banner) */
 .navbar__brand-name {
