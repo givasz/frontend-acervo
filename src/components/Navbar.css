@@ -37,6 +37,19 @@
   transform: scaleX(-1);
 }
 
+/* Nome do acervo ao lado do logo (wordmark — Forma DJR Banner) */
+.navbar__brand-name {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(1rem, 1.4vw, 1.22rem);
+  line-height: 1;
+  letter-spacing: 0.005em;
+  color: var(--title);
+  white-space: nowrap;
+  transition: color var(--transition);
+}
+.navbar__brand:hover .navbar__brand-name { color: var(--sepia-dark); }
+
 /* Indicação da página atual (ao lado do ícone) */
 .navbar__current {
   display: flex;
@@ -206,6 +219,11 @@
 @media (max-width: 600px) {
   .navbar__current-text { display: none; }
   .navbar__current-sep { display: none; }
+  .navbar__brand-name { font-size: 0.98rem; }
+}
+
+@media (max-width: 430px) {
+  .navbar__brand-name { display: none; }
 }
 
 @media (max-width: 900px) {

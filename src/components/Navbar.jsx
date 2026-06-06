@@ -82,6 +82,7 @@ export default function Navbar() {
 
         <Link to="/" className="navbar__brand">
           <img src="/logo.png" alt="Logo" className="navbar__logo" />
+          <span className="navbar__brand-name">Acervo Maria da Conceição</span>
           {currentTitle && (
             <span className="navbar__current">
               <span className="navbar__current-sep" />
