@@ -42,7 +42,7 @@ export default function Home() {
       {/* Banner principal — carrossel gerenciado pelo admin (alterna sozinho se houver mais de uma foto) */}
       {bannerSlides.length > 0 && (
         <section className="home-banner">
-          <Carousel slides={bannerSlides} aspect="58vh" />
+          <Carousel slides={bannerSlides} aspect="calc(100vh - 72px)" />
         </section>
       )}
 
