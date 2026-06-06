@@ -48,14 +48,14 @@
   font-weight: 400;
   line-height: 1.0;
   letter-spacing: -0.02em;
-  color: var(--sepia);
+  color: var(--title);
   opacity: 0;
   animation: fadeIn 0.8s ease 0.4s both;
 }
 
 .hero__title em {
   font-style: italic;
-  color: var(--sepia);
+  color: var(--title);
 }
 
 .hero__desc {
@@ -100,13 +100,11 @@
   margin: 0 auto;
   padding: 1.5rem 2rem 0;
 }
-.home-banner img {
-  width: 100%;
-  height: auto;
-  display: block;
+.home-banner .carousel {
   border: 1px solid var(--border);
   border-radius: 2px;
   box-shadow: 0 12px 40px rgba(0, 0, 0, 0.14);
+  overflow: hidden;
 }
 
 /* Hero compacto (abaixo do banner) */
@@ -117,10 +115,6 @@
 .hero.hero--compact .hero__ornament { display: none; }
 
 /* Carrossel de destaques */
-.home-carousel {
-  padding: 2rem 0 1rem;
-}
-
 /* Collections section */
 .collections-section {
   max-width: 1400px;

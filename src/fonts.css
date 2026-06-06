@@ -1,0 +1,116 @@
+/* ───────────────────────────────────────────────────────────
+   Forma DJR Banner — fonte de display do acervo
+   Família única "Forma DJR Banner" com toda a variação de peso.
+   Arquivos em /public/fonts/forma-djr-banner/
+   Mapeamento de pesos:
+     100 Hairline · 200 Thin · 300 ExtraLight · 350 Light
+     400 Regular  · 500 Medium · 700 Bold · 800 ExtraBold · 900 Black
+   ─────────────────────────────────────────────────────────── */
+
+/* 100 — Hairline */
+@font-face {
+  font-family: 'Forma DJR Banner';
+  src: url('/fonts/forma-djr-banner/FormaDJRBanner-Hairline-Testing.ttf') format('truetype');
+  font-weight: 100; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'Forma DJR Banner';
+  src: url('/fonts/forma-djr-banner/FormaDJRBanner-HairlineItalic-Testing.ttf') format('truetype');
+  font-weight: 100; font-style: italic; font-display: swap;
+}
+
+/* 200 — Thin */
+@font-face {
+  font-family: 'Forma DJR Banner';
+  src: url('/fonts/forma-djr-banner/FormaDJRBanner-Thin-Testing.ttf') format('truetype');
+  font-weight: 200; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'Forma DJR Banner';
+  src: url('/fonts/forma-djr-banner/FormaDJRBanner-ThinItalic-Testing.ttf') format('truetype');
+  font-weight: 200; font-style: italic; font-display: swap;
+}
+
+/* 300 — ExtraLight */
+@font-face {
+  font-family: 'Forma DJR Banner';
+  src: url('/fonts/forma-djr-banner/FormaDJRBanner-ExtraLight-Testing.ttf') format('truetype');
+  font-weight: 300; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'Forma DJR Banner';
+  src: url('/fonts/forma-djr-banner/FormaDJRBanner-ExtraLightItalic-Testing.ttf') format('truetype');
+  font-weight: 300; font-style: italic; font-display: swap;
+}
+
+/* 350 — Light */
+@font-face {
+  font-family: 'Forma DJR Banner';
+  src: url('/fonts/forma-djr-banner/FormaDJRBanner-Light-Testing.ttf') format('truetype');
+  font-weight: 350; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'Forma DJR Banner';
+  src: url('/fonts/forma-djr-banner/FormaDJRBanner-LightItalic-Testing.ttf') format('truetype');
+  font-weight: 350; font-style: italic; font-display: swap;
+}
+
+/* 400 — Regular */
+@font-face {
+  font-family: 'Forma DJR Banner';
+  src: url('/fonts/forma-djr-banner/FormaDJRBanner-Regular-Testing.ttf') format('truetype');
+  font-weight: 400; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'Forma DJR Banner';
+  src: url('/fonts/forma-djr-banner/FormaDJRBanner-Italic-Testing.ttf') format('truetype');
+  font-weight: 400; font-style: italic; font-display: swap;
+}
+
+/* 500 — Medium */
+@font-face {
+  font-family: 'Forma DJR Banner';
+  src: url('/fonts/forma-djr-banner/FormaDJRBanner-Medium-Testing.ttf') format('truetype');
+  font-weight: 500; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'Forma DJR Banner';
+  src: url('/fonts/forma-djr-banner/FormaDJRBanner-MediumItalic-Testing.ttf') format('truetype');
+  font-weight: 500; font-style: italic; font-display: swap;
+}
+
+/* 700 — Bold */
+@font-face {
+  font-family: 'Forma DJR Banner';
+  src: url('/fonts/forma-djr-banner/FormaDJRBanner-Bold-Testing.ttf') format('truetype');
+  font-weight: 700; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'Forma DJR Banner';
+  src: url('/fonts/forma-djr-banner/FormaDJRBanner-BoldItalic-Testing.ttf') format('truetype');
+  font-weight: 700; font-style: italic; font-display: swap;
+}
+
+/* 800 — ExtraBold */
+@font-face {
+  font-family: 'Forma DJR Banner';
+  src: url('/fonts/forma-djr-banner/FormaDJRBanner-ExtraBold-Testing.ttf') format('truetype');
+  font-weight: 800; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'Forma DJR Banner';
+  src: url('/fonts/forma-djr-banner/FormaDJRBanner-ExtraBoldItalic-Testing.ttf') format('truetype');
+  font-weight: 800; font-style: italic; font-display: swap;
+}
+
+/* 900 — Black */
+@font-face {
+  font-family: 'Forma DJR Banner';
+  src: url('/fonts/forma-djr-banner/FormaDJRBanner-Black-Testing.ttf') format('truetype');
+  font-weight: 900; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'Forma DJR Banner';
+  src: url('/fonts/forma-djr-banner/FormaDJRBanner-BlackItalic-Testing.ttf') format('truetype');
+  font-weight: 900; font-style: italic; font-display: swap;
+}

@@ -30,6 +30,7 @@ import AdminCollectionDetail from './pages/admin/AdminCollectionDetail';
 import AdminAlbums from './pages/admin/AdminAlbums';
 import AdminAlbumDetail from './pages/admin/AdminAlbumDetail';
 import AdminImages from './pages/admin/AdminImages';
+import AdminBanner from './pages/admin/AdminBanner';
 import AdminSettings from './pages/admin/AdminSettings';
 import AdminEntrevistas from './pages/admin/AdminEntrevistas';
 import AdminProducoes from './pages/admin/AdminProducoes';
@@ -120,6 +121,7 @@ export default function App() {
                     <Route path="albuns" element={<AdminAlbums />} />
                     <Route path="albuns/:id" element={<AdminAlbumDetail />} />
                     <Route path="imagens" element={<AdminImages />} />
+                    <Route path="banner" element={<AdminBanner />} />
                     <Route path="entrevistas" element={<AdminEntrevistas />} />
                     <Route path="trabalhos" element={<AdminProducoes />} />
                     <Route path="poesias" element={<AdminPoesias />} />

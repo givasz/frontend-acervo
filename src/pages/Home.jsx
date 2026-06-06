@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { getCollections } from '../api';
+import { getCollections, getSettings, readSetting } from '../api';
 import { Archive, ChevronRight, Layers } from 'lucide-react';
 import Carousel from '../components/Carousel';
 import './Home.css';
@@ -10,21 +10,27 @@ const API = import.meta.env.VITE_API_URL || '';
 export default function Home() {
   const [collections, setCollections] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [bannerSlides, setBannerSlides] = useState([]);
 
   useEffect(() => {
     getCollections().then(r => setCollections(r.data)).finally(() => setLoading(false));
-  }, []);
 
-  const slides = collections
-    .filter(c => c.cover_image)
-    .slice(0, 8)
-    .map(c => ({
-      id: c.id,
-      image: `${API}${c.cover_image}`,
-      title: c.name,
-      subtitle: 'Acervo · Coleção',
-      to: `/acervo/${c.slug}`,
-    }));
+    // Carrossel do topo — fotos definidas pelo admin (setting "home_banner")
+    getSettings('home_banner')
+      .then(r => {
+        const items = readSetting(r, []) || [];
+        setBannerSlides(
+          items
+            .filter(it => it && it.url)
+            .map((it, i) => ({
+              id: `banner-${i}`,
+              image: `${API}${it.url}`,
+              title: it.title || '',
+            }))
+        );
+      })
+      .catch(() => {});
+  }, []);
 
   const scrollToCollections = (e) => {
     e.preventDefault();
@@ -33,14 +39,12 @@ export default function Home() {
 
   return (
     <div className="home">
-      {/* Banner principal — foto histórica do acervo */}
-      <section className="home-banner">
-        <img
-          src="/foto.capa.jpg"
-          alt="Acervo Maria da Conceição — registro histórico"
-          fetchPriority="high"
-        />
-      </section>
+      {/* Banner principal — carrossel gerenciado pelo admin (alterna sozinho se houver mais de uma foto) */}
+      {bannerSlides.length > 0 && (
+        <section className="home-banner">
+          <Carousel slides={bannerSlides} aspect="58vh" />
+        </section>
+      )}
 
       {/* Hero / intro */}
       <section className="hero hero--compact">
@@ -71,22 +75,6 @@ export default function Home() {
           <span className="hero__ornament-text">est. 2024</span>
         </div>
       </section>
-
-      {/* Carrossel de destaques (imagens reais do acervo) */}
-      {slides.length > 0 && (
-        <section className="home-carousel">
-          <div className="section-header" style={{maxWidth:'1400px', margin:'0 auto 1.5rem', padding:'0 2rem'}}>
-            <div className="section-header__line" />
-            <div className="section-header__content">
-              <span className="mono" style={{fontSize:'0.7rem', letterSpacing:'0.2em', color:'var(--sepia)', textTransform:'uppercase'}}>
-                Em destaque
-              </span>
-              <h2 className="section-header__title">Imagens do Acervo</h2>
-            </div>
-          </div>
-          <Carousel slides={slides} aspect="60vh" />
-        </section>
-      )}
 
       {/* Collections */}
       <section id="colecoes" className="collections-section">

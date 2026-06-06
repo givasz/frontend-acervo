@@ -1,6 +1,6 @@
 import { NavLink, Outlet, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
-import { Archive, Layers, Image, LogOut, Home, Settings, Youtube, GraduationCap, BookOpen } from 'lucide-react';
+import { Archive, Layers, Image, Images, LogOut, Home, Settings, Youtube, GraduationCap, BookOpen } from 'lucide-react';
 import './AdminLayout.css';
 
 export default function AdminLayout() {
@@ -33,6 +33,9 @@ export default function AdminLayout() {
           </NavLink>
           <NavLink to="/admin/imagens" className={({isActive}) => `admin-nav-item ${isActive?'active':''}`}>
             <Image size={16}/> Imagens
+          </NavLink>
+          <NavLink to="/admin/banner" className={({isActive}) => `admin-nav-item ${isActive?'active':''}`}>
+            <Images size={16}/> Banner Inicial
           </NavLink>
           <NavLink to="/admin/entrevistas" className={({isActive}) => `admin-nav-item ${isActive?'active':''}`}>
             <Youtube size={16}/> Entrevistas

@@ -25,7 +25,7 @@
   font-weight: 400;
   font-size: clamp(2rem, 4.5vw, 3.2rem);
   line-height: 1.05;
-  color: var(--sepia);
+  color: var(--title);
 }
 
 .page-header__rule {

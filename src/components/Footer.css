@@ -18,7 +18,7 @@
   font-family: var(--font-display);
   font-style: italic;
   font-size: 1.35rem;
-  color: var(--sepia);
+  color: var(--title);
 }
 .site-footer__tagline {
   margin-top: 0.6rem;
