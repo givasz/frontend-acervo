@@ -1,5 +1,6 @@
 [build]
-  command = "npm run build"
+  # API na VPS de testes (sobrepõe o VITE_API_URL do painel do Netlify)
+  command = "VITE_API_URL=https://acervo.74.208.118.111.nip.io npm run build"
   publish = "dist"
 
 [[redirects]]

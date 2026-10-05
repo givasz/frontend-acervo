@@ -1,8 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { getCollections, getSettings, readSetting } from '../api';
-import { Archive, ChevronRight, Layers } from 'lucide-react';
-import Carousel from '../components/Carousel';
+import { Archive, Layers } from 'lucide-react';
 import './Home.css';
 
 const API = import.meta.env.VITE_API_URL || '';
@@ -10,120 +9,102 @@ const API = import.meta.env.VITE_API_URL || '';
 export default function Home() {
   const [collections, setCollections] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [bannerSlides, setBannerSlides] = useState([]);
+  const [photos, setPhotos] = useState([]);
 
   useEffect(() => {
-    getCollections().then(r => setCollections(r.data)).finally(() => setLoading(false));
+    getCollections()
+      .then(r => setCollections(Array.isArray(r.data) ? r.data : []))
+      .catch(() => setCollections([]))
+      .finally(() => setLoading(false));
 
-    // Carrossel do topo — fotos definidas pelo admin (setting "home_banner")
+    // Fotos da seção "Memória, Trabalho, Território" — definidas pelo admin (setting "home_banner")
     getSettings('home_banner')
       .then(r => {
         const items = readSetting(r, []) || [];
-        setBannerSlides(
+        setPhotos(
           items
             .filter(it => it && it.url)
-            .map((it, i) => ({
-              id: `banner-${i}`,
-              image: `${API}${it.url}`,
-              title: it.title || '',
-            }))
+            .map((it, i) => ({ id: `foto-${i}`, src: `${API}${it.url}`, title: it.title || '' }))
         );
       })
       .catch(() => {});
   }, []);
 
-  const scrollToCollections = (e) => {
-    e.preventDefault();
-    document.getElementById('colecoes')?.scrollIntoView({ behavior: 'smooth' });
-  };
+  // Sem fotos no banner, usa as capas das coleções
+  const gallery = photos.length > 0
+    ? photos
+    : collections
+        .filter(c => c.cover_image)
+        .map(c => ({ id: `col-${c.id}`, src: `${API}${c.cover_image}`, title: c.name }));
 
   return (
     <div className="home">
-      {/* Banner principal — carrossel gerenciado pelo admin (alterna sozinho se houver mais de uma foto) */}
-      {bannerSlides.length > 0 && (
-        <section className="home-banner">
-          <Carousel slides={bannerSlides} aspect="calc(100vh - 72px)" />
-        </section>
-      )}
-
-      {/* Hero / intro */}
-      <section className="hero hero--compact">
-        <div className="hero__bg">
-          <div className="hero__lines" />
-        </div>
-        <div className="hero__content">
-          <p className="hero__eyebrow mono">Patrimônio Cultural · Memória Histórica</p>
-          <h1 className="hero__title">
-            Acervo<br />
-            <em>Maria da</em><br />
-            Conceição
-          </h1>
-          <div className="divider" style={{maxWidth: '200px', margin: '2rem 0'}} />
-          <p className="hero__desc">
-            Uma coleção dedicada à preservação e difusão da memória histórica,
-            reúne documentos, fotografias e registros que contam a história
-            através do tempo.
+      {/* Sobre o acervo */}
+      <section className="home-section">
+        <h1 className="home-title">Sobre o acervo</h1>
+        <hr className="home-rule" />
+        <div className="home-text">
+          <p>
+            O Acervo Maria da Conceição visa à recuperação, organização e preservação
+            da documentação produzida pelos movimentos de trabalhadores do Sudoeste da
+            Bahia e suas entidades ao longo da história.
           </p>
-          <div className="hero__actions">
-            <a href="#colecoes" onClick={scrollToCollections} className="btn btn-primary">
-              <Archive size={16} /> Explorar Acervo
-            </a>
-            <Link to="/sobre" className="btn btn-ghost">Sobre o Acervo</Link>
-          </div>
+          <p>
+            É constituído por importantes conjuntos documentais referentes à organização
+            dos trabalhadores, permitindo conhecer o papel desempenhado por trabalhadores e
+            trabalhadoras baianos em diferentes movimentos e em diferentes períodos históricos.
+          </p>
         </div>
-        <div className="hero__ornament">
-          <span className="hero__ornament-text">est. 2024</span>
-        </div>
+        <Link to="/sobre" className="home-tag">Saiba mais</Link>
+        <hr className="home-rule" />
       </section>
 
-      {/* Collections */}
-      <section id="colecoes" className="collections-section">
-        <div className="section-header">
-          <div className="section-header__line" />
-          <div className="section-header__content">
-            <span className="mono" style={{fontSize:'0.7rem', letterSpacing:'0.2em', color:'var(--sepia)', textTransform:'uppercase'}}>
-              Coleções Disponíveis
-            </span>
-            <h2 className="section-header__title">Acervo</h2>
+      {/* Memória · Trabalho · Território */}
+      <section className="home-section">
+        <h2 className="home-title home-title--stack">
+          <span>Memória</span>
+          <span>Trabalho</span>
+          <span>Território</span>
+        </h2>
+
+        {gallery.length > 0 && (
+          <div className="home-gallery">
+            {gallery.slice(0, 6).map(p => (
+              <figure key={p.id} className="home-gallery__item">
+                <img src={p.src} alt={p.title} loading="lazy" />
+              </figure>
+            ))}
           </div>
-        </div>
+        )}
+      </section>
+
+      {/* Explorar o acervo */}
+      <section id="colecoes" className="home-section">
+        <h2 className="home-title">Explorar o acervo</h2>
+        <hr className="home-rule" />
 
         {loading ? (
-          <div className="collections-grid">
-            {[1,2,3].map(i => <div key={i} className="collection-card skeleton" style={{height:'280px'}} />)}
+          <div className="home-collections">
+            {[1, 2, 3].map(i => <div key={i} className="home-col skeleton" style={{ height: '220px' }} />)}
           </div>
         ) : collections.length === 0 ? (
-          <div className="empty-state">
-            <Layers size={48} opacity={0.2} />
+          <div className="home-empty">
+            <Layers size={40} opacity={0.25} />
             <p>Nenhuma coleção disponível ainda.</p>
           </div>
         ) : (
-          <div className="collections-grid">
+          <div className="home-collections">
             {collections.map((col, i) => (
-              <Link
-                key={col.id}
-                to={`/acervo/${col.slug}`}
-                className="collection-card animate-fade"
-                style={{animationDelay: `${i * 80}ms`}}
-              >
-                <div className="collection-card__cover">
+              <Link key={col.id} to={`/acervo/${col.slug}`} className="home-col">
+                <div className="home-col__cover">
                   {col.cover_image
-                    ? <img src={`${API}${col.cover_image}`} alt={col.name} />
-                    : <div className="collection-card__no-cover"><Archive size={40} /></div>
-                  }
-                  <div className="collection-card__overlay" />
-                  <div className="collection-card__hover-overlay">
-                    <span className="collection-card__hover-title">{col.name}</span>
-                    <span className="btn btn-primary btn-sm">Ver coleção</span>
-                  </div>
-                  <div className="collection-card__badge mono">{col.album_count} álbuns</div>
+                    ? <img src={`${API}${col.cover_image}`} alt={col.name} loading="lazy" />
+                    : <div className="home-col__no-cover"><Archive size={36} /></div>}
                 </div>
-                <div className="collection-card__body">
-                  <h3 className="collection-card__title">{col.name}</h3>
-                  {col.description && <p className="collection-card__desc">{col.description}</p>}
-                  <span className="collection-card__cta mono">
-                    Ver coleção <ChevronRight size={14} />
-                  </span>
+                <div className="home-col__body">
+                  <h3 className="home-col__title">{col.name}</h3>
+                  <span className="home-col__num">Coleção {String(i + 1).padStart(2, '0')}</span>
+                  <span className="home-tag">Acessar coleção</span>
                 </div>
               </Link>
             ))}
